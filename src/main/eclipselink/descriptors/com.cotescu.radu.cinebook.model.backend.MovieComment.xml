@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<descriptor type="relational">
+   <name>com.cotescu.radu.cinebook.model.backend.MovieComment</name>
+   <class-handle>
+      <type-name>com.cotescu.radu.cinebook.model.backend.MovieComment</type-name>
+   </class-handle>
+   <transactional-policy type="relational">
+      <descriptor-alias>Moviecomment</descriptor-alias>
+      <refresh-cache-policy/>
+      <caching-policy/>
+      <query-manager type="relational">
+         <insert-query type="insert">
+            <relational-options>
+               <format type="sql"/>
+               <bind-all-parameters>true</bind-all-parameters>
+            </relational-options>
+         </insert-query>
+         <delete-query type="delete">
+            <relational-options>
+               <format type="sql"/>
+               <bind-all-parameters>true</bind-all-parameters>
+            </relational-options>
+         </delete-query>
+         <update-query type="update">
+            <relational-options>
+               <format type="sql"/>
+               <bind-all-parameters>true</bind-all-parameters>
+            </relational-options>
+         </update-query>
+         <read-object-query type="read-object">
+            <relational-options>
+               <format type="sql"/>
+               <bind-all-parameters>true</bind-all-parameters>
+            </relational-options>
+         </read-object-query>
+         <read-all-query type="read-all">
+            <relational-options>
+               <format type="sql"/>
+               <bind-all-parameters>true</bind-all-parameters>
+            </relational-options>
+         </read-all-query>
+      </query-manager>
+      <locking-policy type="relational"/>
+      <primary-key-policy>
+         <primary-key-handles>
+            <column-handle>
+               <column-table-name>MovieComment</column-table-name>
+               <column-name>id</column-name>
+            </column-handle>
+         </primary-key-handles>
+      </primary-key-policy>
+   </transactional-policy>
+   <mappings>
+      <mapping type="direct-to-field">
+         <name>commentText</name>
+         <attribute-handle>
+            <attribute-declaring-type-name>com.cotescu.radu.cinebook.model.backend.MovieComment</attribute-declaring-type-name>
+            <attribute-name>commentText</attribute-name>
+         </attribute-handle>
+         <column-handle>
+            <column-table-name>MovieComment</column-table-name>
+            <column-name>comment_text</column-name>
+         </column-handle>
+      </mapping>
+      <mapping type="direct-to-field">
+         <name>datePosted</name>
+         <attribute-handle>
+            <attribute-declaring-type-name>com.cotescu.radu.cinebook.model.backend.MovieComment</attribute-declaring-type-name>
+            <attribute-name>datePosted</attribute-name>
+         </attribute-handle>
+         <column-handle>
+            <column-table-name>MovieComment</column-table-name>
+            <column-name>date_posted</column-name>
+         </column-handle>
+      </mapping>
+      <mapping type="direct-to-field">
+         <name>id</name>
+         <attribute-handle>
+            <attribute-declaring-type-name>com.cotescu.radu.cinebook.model.backend.MovieComment</attribute-declaring-type-name>
+            <attribute-name>id</attribute-name>
+         </attribute-handle>
+         <column-handle>
+            <column-table-name>MovieComment</column-table-name>
+            <column-name>id</column-name>
+         </column-handle>
+      </mapping>
+      <mapping type="one-to-one">
+         <name>movie</name>
+         <attribute-handle>
+            <attribute-declaring-type-name>com.cotescu.radu.cinebook.model.backend.MovieComment</attribute-declaring-type-name>
+            <attribute-name>movie</attribute-name>
+         </attribute-handle>
+         <reference-descriptor-handle>
+            <descriptor-name>com.cotescu.radu.cinebook.model.backend.Movie</descriptor-name>
+         </reference-descriptor-handle>
+         <indirection-type>value-holder-indirection</indirection-type>
+         <reference-handle>
+            <reference-table-name>MovieComment</reference-table-name>
+            <reference-name>fk_MovieComment_Movie</reference-name>
+         </reference-handle>
+      </mapping>
+      <mapping type="one-to-one">
+         <name>user</name>
+         <attribute-handle>
+            <attribute-declaring-type-name>com.cotescu.radu.cinebook.model.backend.MovieComment</attribute-declaring-type-name>
+            <attribute-name>user</attribute-name>
+         </attribute-handle>
+         <reference-descriptor-handle>
+            <descriptor-name>com.cotescu.radu.cinebook.model.backend.User</descriptor-name>
+         </reference-descriptor-handle>
+         <indirection-type>value-holder-indirection</indirection-type>
+         <reference-handle>
+            <reference-table-name>MovieComment</reference-table-name>
+            <reference-name>fk_MovieComment_User</reference-name>
+         </reference-handle>
+      </mapping>
+   </mappings>
+   <primary-table-handle>
+      <table-name>MovieComment</table-name>
+   </primary-table-handle>
+</descriptor>

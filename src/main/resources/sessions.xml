@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sessions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1.2">
+   <session xsi:type="database-session">
+      <name>devmachine</name>
+      <event-listener-classes/>
+      <logging xsi:type="eclipselink-log">
+         <log-level>fine</log-level>
+         <logging-options>
+            <log-exception-stacktrace>false</log-exception-stacktrace>
+            <print-thread>false</print-thread>
+            <print-session>true</print-session>
+            <print-connection>true</print-connection>
+            <print-date>true</print-date>
+         </logging-options>
+      </logging>
+      <primary-project xsi:type="xml">/home/radu/workspace/java/comp6003/cinebook/src/main/resources/cinebook-eclipselink.xml</primary-project>
+      <login xsi:type="database-login">
+         <platform-class>org.eclipse.persistence.platform.database.MySQLPlatform</platform-class>
+         <sequencing>
+            <default-sequence xsi:type="table-sequence">
+               <name>sequencer</name>
+               <table>SEQUENCER</table>
+               <name-field>SEQUENCE_NAME</name-field>
+               <counter-field>SEQUENCE_COUNTER</counter-field>
+            </default-sequence>
+         </sequencing>
+         <driver-class>com.mysql.jdbc.Driver</driver-class>
+         <connection-url>jdbc:mysql://devmachine/cinebook</connection-url>
+         <struct-converters/>
+      </login>
+   </session>
+</sessions>

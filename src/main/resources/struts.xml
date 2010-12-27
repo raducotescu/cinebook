@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"       
+          "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="home" extends="struts-default" namespace="/">
+		<action name="signIn" class="com.cotescu.radu.struts.actions.SignInAction">
+			<result name="success" type="redirectAction">home</result>
+			<result name="input">/pages/login.jsp</result>
+			<result name="failed">/pages/login.jsp</result>		
+		</action>
+		
+		<action name="signOut" class="com.cotescu.radu.struts.actions.SignOutAction">
+			<result name="success" type="redirectAction">index</result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object-persistence xmlns="http://www.eclipse.org/eclipselink/xsds/persistence" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:eclipselink="http://www.eclipse.org/eclipselink/xsds/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="Eclipse Persistence Services - 2.1.2.v20101206-r8635">
+   <name>cinebook</name>
+   <class-mapping-descriptors>
+      <class-mapping-descriptor xsi:type="relational-class-mapping-descriptor">
+         <class>com.cotescu.radu.cinebook.model.backend.Booking</class>
+         <alias>Booking</alias>
+         <primary-key>
+            <field table="Booking" name="id" xsi:type="column"/>
+         </primary-key>
+         <events/>
+         <querying/>
+         <attribute-mappings>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>id</attribute-name>
+               <field table="Booking" name="id" xsi:type="column"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>movieUserRating</attribute-name>
+               <field table="Booking" name="movie_user_rating" xsi:type="column"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="one-to-one-mapping">
+               <attribute-name>scheduleEntry</attribute-name>
+               <reference-class>com.cotescu.radu.cinebook.model.backend.Schedule</reference-class>
+               <foreign-key>
+                  <field-reference>
+                     <source-field table="Booking" name="schedule_entry_id" xsi:type="column"/>
+                     <target-field table="Schedule" name="id" xsi:type="column"/>
+                  </field-reference>
+               </foreign-key>
+               <foreign-key-fields>
+                  <field table="Booking" name="schedule_entry_id" xsi:type="column"/>
+               </foreign-key-fields>
+               <indirection xsi:type="value-holder-indirection-policy"/>
+               <selection-query xsi:type="read-object-query"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>seats</attribute-name>
+               <field table="Booking" name="seats" xsi:type="column"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>status</attribute-name>
+               <field table="Booking" name="status" xsi:type="column"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="one-to-one-mapping">
+               <attribute-name>user</attribute-name>
+               <reference-class>com.cotescu.radu.cinebook.model.backend.User</reference-class>
+               <foreign-key>
+                  <field-reference>
+                     <source-field table="Booking" name="user_id" xsi:type="column"/>
+                     <target-field table="User" name="id" xsi:type="column"/>
+                  </field-reference>
+               </foreign-key>
+               <foreign-key-fields>
+                  <field table="Booking" name="user_id" xsi:type="column"/>
+               </foreign-key-fields>
+               <indirection xsi:type="value-holder-indirection-policy"/>
+               <selection-query xsi:type="read-object-query"/>
+            </attribute-mapping>
+         </attribute-mappings>
+         <descriptor-type>independent</descriptor-type>
+         <instantiation/>
+         <copying xsi:type="instantiation-copy-policy"/>
+         <tables>
+            <table name="Booking"/>
+         </tables>
+      </class-mapping-descriptor>
+      <class-mapping-descriptor xsi:type="relational-class-mapping-descriptor">
+         <class>com.cotescu.radu.cinebook.model.backend.Friend</class>
+         <alias>Friend</alias>
+         <primary-key>
+            <field table="Friend" name="id" xsi:type="column"/>
+         </primary-key>
+         <events/>
+         <querying/>
+         <attribute-mappings>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>id</attribute-name>
+               <field table="Friend" name="id" xsi:type="column"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>status</attribute-name>
+               <field table="Friend" name="status" xsi:type="column"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="one-to-one-mapping">
+               <attribute-name>user1</attribute-name>
+               <reference-class>com.cotescu.radu.cinebook.model.backend.User</reference-class>
+               <foreign-key>
+                  <field-reference>
+                     <source-field table="Friend" name="user_id" xsi:type="column"/>
+                     <target-field table="User" name="id" xsi:type="column"/>
+                  </field-reference>
+               </foreign-key>
+               <foreign-key-fields>
+                  <field table="Friend" name="user_id" xsi:type="column"/>
+               </foreign-key-fields>
+               <indirection xsi:type="value-holder-indirection-policy"/>
+               <selection-query xsi:type="read-object-query"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="one-to-one-mapping">
+               <attribute-name>user2</attribute-name>
+               <reference-class>com.cotescu.radu.cinebook.model.backend.User</reference-class>
+               <foreign-key>
+                  <field-reference>
+                     <source-field table="Friend" name="friend_id" xsi:type="column"/>
+                     <target-field table="User" name="id" xsi:type="column"/>
+                  </field-reference>
+               </foreign-key>
+               <foreign-key-fields>
+                  <field table="Friend" name="friend_id" xsi:type="column"/>
+               </foreign-key-fields>
+               <indirection xsi:type="value-holder-indirection-policy"/>
+               <selection-query xsi:type="read-object-query"/>
+            </attribute-mapping>
+         </attribute-mappings>
+         <descriptor-type>independent</descriptor-type>
+         <instantiation/>
+         <copying xsi:type="instantiation-copy-policy"/>
+         <tables>
+            <table name="Friend"/>
+         </tables>
+      </class-mapping-descriptor>
+      <class-mapping-descriptor xsi:type="relational-class-mapping-descriptor">
+         <class>com.cotescu.radu.cinebook.model.backend.Movie</class>
+         <alias>Movie</alias>
+         <primary-key>
+            <field table="Movie" name="id" xsi:type="column"/>
+         </primary-key>
+         <events/>
+         <querying/>
+         <attribute-mappings>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>cast</attribute-name>
+               <field table="Movie" name="cast" xsi:type="column"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="one-to-many-mapping">
+               <attribute-name>comments</attribute-name>
+               <reference-class>com.cotescu.radu.cinebook.model.backend.MovieComment</reference-class>
+               <target-foreign-key>
+                  <field-reference>
+                     <source-field table="MovieComment" name="movie_id" xsi:type="column"/>
+                     <target-field table="Movie" name="id" xsi:type="column"/>
+                  </field-reference>
+               </target-foreign-key>
+               <container xsi:type="list-container-policy">
+                  <collection-type>org.eclipse.persistence.indirection.IndirectList</collection-type>
+               </container>
+               <indirection xsi:type="transparent-collection-indirection-policy"/>
+               <selection-query xsi:type="read-all-query">
+                  <outer-join-subclasses>true</outer-join-subclasses>
+                  <container xsi:type="list-container-policy">
+                     <collection-type>org.eclipse.persistence.indirection.IndirectList</collection-type>
+                  </container>
+                  <order-by-expressions>
+                     <expression function="ascending" xsi:type="function-expression">
+                        <arguments>
+                           <argument name="datePosted" xsi:type="query-key-expression">
+                              <base xsi:type="base-expression"/>
+                           </argument>
+                        </arguments>
+                     </expression>
+                  </order-by-expressions>
+               </selection-query>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>description</attribute-name>
+               <field table="Movie" name="description" xsi:type="column"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>director</attribute-name>
+               <field table="Movie" name="director" xsi:type="column"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>duration</attribute-name>
+               <field table="Movie" name="duration" xsi:type="column"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>genre</attribute-name>
+               <field table="Movie" name="genre" xsi:type="column"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>id</attribute-name>
+               <field table="Movie" name="id" xsi:type="column"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>posterLocation</attribute-name>
+               <field table="Movie" name="poster_location" xsi:type="column"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>rating</attribute-name>
+               <field table="Movie" name="rating" xsi:type="column"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>title</attribute-name>
+               <field table="Movie" name="title" xsi:type="column"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>userRating</attribute-name>
+               <field table="Movie" name="user_rating" xsi:type="column"/>
+            </attribute-mapping>
+         </attribute-mappings>
+         <descriptor-type>independent</descriptor-type>
+         <instantiation/>
+         <copying xsi:type="instantiation-copy-policy"/>
+         <tables>
+            <table name="Movie"/>
+         </tables>
+      </class-mapping-descriptor>
+      <class-mapping-descriptor xsi:type="relational-class-mapping-descriptor">
+         <class>com.cotescu.radu.cinebook.model.backend.MovieComment</class>
+         <alias>Moviecomment</alias>
+         <primary-key>
+            <field table="MovieComment" name="id" xsi:type="column"/>
+         </primary-key>
+         <events/>
+         <querying/>
+         <attribute-mappings>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>commentText</attribute-name>
+               <field table="MovieComment" name="comment_text" xsi:type="column"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>datePosted</attribute-name>
+               <field table="MovieComment" name="date_posted" xsi:type="column"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>id</attribute-name>
+               <field table="MovieComment" name="id" xsi:type="column"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="one-to-one-mapping">
+               <attribute-name>movie</attribute-name>
+               <reference-class>com.cotescu.radu.cinebook.model.backend.Movie</reference-class>
+               <foreign-key>
+                  <field-reference>
+                     <source-field table="MovieComment" name="movie_id" xsi:type="column"/>
+                     <target-field table="Movie" name="id" xsi:type="column"/>
+                  </field-reference>
+               </foreign-key>
+               <foreign-key-fields>
+                  <field table="MovieComment" name="movie_id" xsi:type="column"/>
+               </foreign-key-fields>
+               <indirection xsi:type="value-holder-indirection-policy"/>
+               <selection-query xsi:type="read-object-query"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="one-to-one-mapping">
+               <attribute-name>user</attribute-name>
+               <reference-class>com.cotescu.radu.cinebook.model.backend.User</reference-class>
+               <foreign-key>
+                  <field-reference>
+                     <source-field table="MovieComment" name="user_id" xsi:type="column"/>
+                     <target-field table="User" name="id" xsi:type="column"/>
+                  </field-reference>
+               </foreign-key>
+               <foreign-key-fields>
+                  <field table="MovieComment" name="user_id" xsi:type="column"/>
+               </foreign-key-fields>
+               <indirection xsi:type="value-holder-indirection-policy"/>
+               <selection-query xsi:type="read-object-query"/>
+            </attribute-mapping>
+         </attribute-mappings>
+         <descriptor-type>independent</descriptor-type>
+         <instantiation/>
+         <copying xsi:type="instantiation-copy-policy"/>
+         <tables>
+            <table name="MovieComment"/>
+         </tables>
+      </class-mapping-descriptor>
+      <class-mapping-descriptor xsi:type="relational-class-mapping-descriptor">
+         <class>com.cotescu.radu.cinebook.model.backend.Schedule</class>
+         <alias>Schedule</alias>
+         <primary-key>
+            <field table="Schedule" name="id" xsi:type="column"/>
+         </primary-key>
+         <events/>
+         <querying/>
+         <attribute-mappings>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>id</attribute-name>
+               <field table="Schedule" name="id" xsi:type="column"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="one-to-one-mapping">
+               <attribute-name>movie</attribute-name>
+               <reference-class>com.cotescu.radu.cinebook.model.backend.Movie</reference-class>
+               <foreign-key>
+                  <field-reference>
+                     <source-field table="Schedule" name="movie" xsi:type="column"/>
+                     <target-field table="Movie" name="id" xsi:type="column"/>
+                  </field-reference>
+               </foreign-key>
+               <foreign-key-fields>
+                  <field table="Schedule" name="movie" xsi:type="column"/>
+               </foreign-key-fields>
+               <indirection xsi:type="value-holder-indirection-policy"/>
+               <selection-query xsi:type="read-object-query"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>startTime</attribute-name>
+               <field table="Schedule" name="start_time" xsi:type="column"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>theatre</attribute-name>
+               <field table="Schedule" name="theatre" xsi:type="column"/>
+            </attribute-mapping>
+         </attribute-mappings>
+         <descriptor-type>independent</descriptor-type>
+         <instantiation/>
+         <copying xsi:type="instantiation-copy-policy"/>
+         <tables>
+            <table name="Schedule"/>
+         </tables>
+      </class-mapping-descriptor>
+      <class-mapping-descriptor xsi:type="relational-class-mapping-descriptor">
+         <class>com.cotescu.radu.cinebook.model.backend.User</class>
+         <alias>User</alias>
+         <primary-key>
+            <field table="User" name="id" xsi:type="column"/>
+         </primary-key>
+         <events/>
+         <querying>
+            <queries>
+               <query name="getUserByEmail" xsi:type="read-object-query">
+                  <criteria operator="equal" xsi:type="relation-expression">
+                     <left name="email" xsi:type="query-key-expression">
+                        <base xsi:type="base-expression"/>
+                     </left>
+                     <right xsi:type="parameter-expression">
+                        <parameter name="email" xsi:type="column"/>
+                     </right>
+                  </criteria>
+                  <arguments>
+                     <argument name="email">
+                        <type>java.lang.String</type>
+                     </argument>
+                  </arguments>
+                  <bind-all-parameters>true</bind-all-parameters>
+                  <reference-class>com.cotescu.radu.cinebook.model.backend.User</reference-class>
+                  <outer-join-subclasses>false</outer-join-subclasses>
+               </query>
+            </queries>
+         </querying>
+         <attribute-mappings>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>email</attribute-name>
+               <field table="User" name="email" xsi:type="column"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>firstName</attribute-name>
+               <field table="User" name="first_name" xsi:type="column"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>id</attribute-name>
+               <field table="User" name="id" xsi:type="column"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>lastName</attribute-name>
+               <field table="User" name="last_name" xsi:type="column"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>password</attribute-name>
+               <field table="User" name="password" xsi:type="column"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>role</attribute-name>
+               <field table="User" name="role" xsi:type="column"/>
+            </attribute-mapping>
+         </attribute-mappings>
+         <descriptor-type>independent</descriptor-type>
+         <instantiation/>
+         <copying xsi:type="instantiation-copy-policy"/>
+         <tables>
+            <table name="User"/>
+         </tables>
+      </class-mapping-descriptor>
+   </class-mapping-descriptors>
+   <login xsi:type="database-login">
+      <platform-class>org.eclipse.persistence.platform.database.MySQLPlatform</platform-class>
+      <user-name>cinebook</user-name>
+      <password>8E09B13472CAD80810A28E8E01788EB9</password>
+      <sequencing>
+         <default-sequence xsi:type="table-sequence">
+            <table>SEQUENCER</table>
+            <name-field>SEQUENCE_NAME</name-field>
+            <counter-field>SEQUENCE_COUNTER</counter-field>
+         </default-sequence>
+      </sequencing>
+      <driver-class>com.mysql.jdbc.Driver</driver-class>
+      <connection-url>jdbc:mysql://devmachine/cinebook</connection-url>
+   </login>
+</object-persistence>

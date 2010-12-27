@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<table>
+   <short-name>SEQUENCER</short-name>
+   <last-refresh-timestamp>2010-12-27T19:22:45.387</last-refresh-timestamp>
+   <columns>
+      <column>
+         <name>SEQUENCE_COUNTER</name>
+         <type>integer</type>
+      </column>
+      <column>
+         <name>SEQUENCE_NAME</name>
+         <type>varchar</type>
+         <size>30</size>
+         <unique>true</unique>
+         <primary-key>true</primary-key>
+      </column>
+   </columns>
+</table>

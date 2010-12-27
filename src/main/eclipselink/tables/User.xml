@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<table>
+   <short-name>User</short-name>
+   <last-refresh-timestamp>2010-12-27T19:48:41.726</last-refresh-timestamp>
+   <columns>
+      <column>
+         <name>email</name>
+         <type>varchar</type>
+         <size>255</size>
+      </column>
+      <column>
+         <name>first_name</name>
+         <type>varchar</type>
+         <size>45</size>
+      </column>
+      <column>
+         <name>id</name>
+         <type>integer</type>
+         <unique>true</unique>
+         <primary-key>true</primary-key>
+      </column>
+      <column>
+         <name>last_name</name>
+         <type>varchar</type>
+         <size>45</size>
+      </column>
+      <column>
+         <name>password</name>
+         <type>varchar</type>
+         <size>45</size>
+      </column>
+      <column>
+         <name>role</name>
+         <type>integer</type>
+      </column>
+   </columns>
+</table>
