@@ -193,4 +193,13 @@
    <primary-table-handle>
       <table-name>Movie</table-name>
    </primary-table-handle>
+   <uses-sequencing>true</uses-sequencing>
+   <sequence-number-name>MOVIE_SEQ</sequence-number-name>
+   <sequence-number-table-handle>
+      <table-name>Movie</table-name>
+   </sequence-number-table-handle>
+   <sequence-number-column-handle>
+      <column-table-name>Movie</column-table-name>
+      <column-name>id</column-name>
+   </sequence-number-column-handle>
 </descriptor>

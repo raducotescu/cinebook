@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <table>
-   <short-name>Booking</short-name>
-   <last-refresh-timestamp>2010-12-28T15:19:10.552</last-refresh-timestamp>
+   <short-name>UserComment</short-name>
+   <last-refresh-timestamp>2010-12-28T15:31:04.761</last-refresh-timestamp>
    <columns>
+      <column>
+         <name>comment_text</name>
+         <type>varchar</type>
+         <size>1000</size>
+      </column>
       <column>
          <name>id</name>
          <type>integer</type>
@@ -10,49 +15,22 @@
          <primary-key>true</primary-key>
       </column>
       <column>
-         <name>movie_user_rating</name>
+         <name>postedBy</name>
          <type>integer</type>
+      </column>
+      <column>
+         <name>postedTo</name>
+         <type>integer</type>
+      </column>
+      <column>
+         <name>rating</name>
+         <type>real</type>
          <allows-null>true</allows-null>
-      </column>
-      <column>
-         <name>schedule_entry_id</name>
-         <type>integer</type>
-      </column>
-      <column>
-         <name>seats</name>
-         <type>integer</type>
-      </column>
-      <column>
-         <name>status</name>
-         <type>integer</type>
-      </column>
-      <column>
-         <name>user_id</name>
-         <type>integer</type>
       </column>
    </columns>
    <references>
       <table-association>
-         <name>fk_Booking_Schedule</name>
-         <target-table-handle>
-            <table-name>Schedule</table-name>
-         </target-table-handle>
-         <on-database>true</on-database>
-         <column-pairs>
-            <column-pair>
-               <source-column-handle>
-                  <column-table-name>Booking</column-table-name>
-                  <column-name>schedule_entry_id</column-name>
-               </source-column-handle>
-               <target-column-handle>
-                  <column-table-name>Schedule</column-table-name>
-                  <column-name>id</column-name>
-               </target-column-handle>
-            </column-pair>
-         </column-pairs>
-      </table-association>
-      <table-association>
-         <name>fk_Booking_User</name>
+         <name>fk_UserComments_ByUser</name>
          <target-table-handle>
             <table-name>User</table-name>
          </target-table-handle>
@@ -60,8 +38,27 @@
          <column-pairs>
             <column-pair>
                <source-column-handle>
-                  <column-table-name>Booking</column-table-name>
-                  <column-name>user_id</column-name>
+                  <column-table-name>UserComment</column-table-name>
+                  <column-name>postedBy</column-name>
+               </source-column-handle>
+               <target-column-handle>
+                  <column-table-name>User</column-table-name>
+                  <column-name>id</column-name>
+               </target-column-handle>
+            </column-pair>
+         </column-pairs>
+      </table-association>
+      <table-association>
+         <name>fk_UserComments_ToUser</name>
+         <target-table-handle>
+            <table-name>User</table-name>
+         </target-table-handle>
+         <on-database>true</on-database>
+         <column-pairs>
+            <column-pair>
+               <source-column-handle>
+                  <column-table-name>UserComment</column-table-name>
+                  <column-name>postedTo</column-name>
                </source-column-handle>
                <target-column-handle>
                   <column-table-name>User</column-table-name>

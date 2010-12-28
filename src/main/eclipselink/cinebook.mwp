@@ -11,6 +11,7 @@
          <name>com.cotescu.radu.cinebook.model.backend.MovieComment</name>
          <name>com.cotescu.radu.cinebook.model.backend.Schedule</name>
          <name>com.cotescu.radu.cinebook.model.backend.User</name>
+         <name>com.cotescu.radu.cinebook.model.backend.UserComment</name>
       </user-type-names>
    </class-repository>
    <descriptor-names>
@@ -20,6 +21,7 @@
       <descriptor-name>com.cotescu.radu.cinebook.model.backend.MovieComment</descriptor-name>
       <descriptor-name>com.cotescu.radu.cinebook.model.backend.Schedule</descriptor-name>
       <descriptor-name>com.cotescu.radu.cinebook.model.backend.User</descriptor-name>
+      <descriptor-name>com.cotescu.radu.cinebook.model.backend.UserComment</descriptor-name>
    </descriptor-names>
    <defaults-policy type="relational">
       <use-method-accessing>false</use-method-accessing>
@@ -59,6 +61,7 @@
          <name>Schedule</name>
          <name>SEQUENCER</name>
          <name>User</name>
+         <name>UserComment</name>
       </table-names>
    </table-repository>
    <sequencing>

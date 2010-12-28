@@ -1,8 +1,5 @@
 package com.cotescu.radu.struts.actions;
 
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.interceptor.ServletRequestAware;
@@ -30,7 +27,11 @@ public class SignInAction extends BaseAction implements ServletRequestAware {
 		User user = (User) EclipseLinkSession.getEclipseLinkSession()
 				.executeQuery("getUserByEmail", User.class, username);
 
-		if (user != null && password.equals(user.getPassword())) {
+		String salt = (String) PropertiesLoader.getPropertiesFromFile(
+				"application.properties").get("salt");
+		if (user != null
+				&& PasswordDigester.getHash(password, salt).equals(
+						user.getPassword())) {
 			request.getSession(true).setAttribute(
 					SecurityInterceptor.USER_OBJECT, user);
 			return SUCCESS;
@@ -53,12 +54,8 @@ public class SignInAction extends BaseAction implements ServletRequestAware {
 		this.username = username;
 	}
 
-	public void setPassword(String pass) throws NoSuchAlgorithmException,
-			UnsupportedEncodingException {
-		String salt = (String) PropertiesLoader.getPropertiesFromFile(
-				"application.properties").get("salt");
-		String hashedPassword = PasswordDigester.getHash(pass, salt); 
-		this.password = hashedPassword;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }

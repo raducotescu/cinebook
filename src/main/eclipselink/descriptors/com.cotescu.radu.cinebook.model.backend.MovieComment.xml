@@ -118,4 +118,13 @@
    <primary-table-handle>
       <table-name>MovieComment</table-name>
    </primary-table-handle>
+   <uses-sequencing>true</uses-sequencing>
+   <sequence-number-name>MOVIECOMMENT_SEQ</sequence-number-name>
+   <sequence-number-table-handle>
+      <table-name>MovieComment</table-name>
+   </sequence-number-table-handle>
+   <sequence-number-column-handle>
+      <column-table-name>MovieComment</column-table-name>
+      <column-name>id</column-name>
+   </sequence-number-column-handle>
 </descriptor>

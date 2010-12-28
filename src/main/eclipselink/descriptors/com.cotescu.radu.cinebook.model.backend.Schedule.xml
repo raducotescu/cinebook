@@ -103,4 +103,13 @@
    <primary-table-handle>
       <table-name>Schedule</table-name>
    </primary-table-handle>
+   <uses-sequencing>true</uses-sequencing>
+   <sequence-number-name>SCHEDULE_SEQ</sequence-number-name>
+   <sequence-number-table-handle>
+      <table-name>Schedule</table-name>
+   </sequence-number-table-handle>
+   <sequence-number-column-handle>
+      <column-table-name>Schedule</column-table-name>
+      <column-name>id</column-name>
+   </sequence-number-column-handle>
 </descriptor>

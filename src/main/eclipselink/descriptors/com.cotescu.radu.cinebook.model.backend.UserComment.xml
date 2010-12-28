@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <descriptor type="relational">
-   <name>com.cotescu.radu.cinebook.model.backend.Booking</name>
+   <name>com.cotescu.radu.cinebook.model.backend.UserComment</name>
    <class-handle>
-      <type-name>com.cotescu.radu.cinebook.model.backend.Booking</type-name>
+      <type-name>com.cotescu.radu.cinebook.model.backend.UserComment</type-name>
    </class-handle>
    <transactional-policy type="relational">
-      <descriptor-alias>Booking</descriptor-alias>
+      <descriptor-alias>Usercomments</descriptor-alias>
       <refresh-cache-policy/>
       <caching-policy/>
       <query-manager type="relational">
@@ -44,7 +44,7 @@
       <primary-key-policy>
          <primary-key-handles>
             <column-handle>
-               <column-table-name>Booking</column-table-name>
+               <column-table-name>UserComment</column-table-name>
                <column-name>id</column-name>
             </column-handle>
          </primary-key-handles>
@@ -52,90 +52,79 @@
    </transactional-policy>
    <mappings>
       <mapping type="direct-to-field">
+         <name>commentText</name>
+         <attribute-handle>
+            <attribute-declaring-type-name>com.cotescu.radu.cinebook.model.backend.UserComment</attribute-declaring-type-name>
+            <attribute-name>commentText</attribute-name>
+         </attribute-handle>
+         <column-handle>
+            <column-table-name>UserComment</column-table-name>
+            <column-name>comment_text</column-name>
+         </column-handle>
+      </mapping>
+      <mapping type="direct-to-field">
          <name>id</name>
          <attribute-handle>
-            <attribute-declaring-type-name>com.cotescu.radu.cinebook.model.backend.Booking</attribute-declaring-type-name>
+            <attribute-declaring-type-name>com.cotescu.radu.cinebook.model.backend.UserComment</attribute-declaring-type-name>
             <attribute-name>id</attribute-name>
          </attribute-handle>
          <column-handle>
-            <column-table-name>Booking</column-table-name>
+            <column-table-name>UserComment</column-table-name>
             <column-name>id</column-name>
          </column-handle>
       </mapping>
-      <mapping type="direct-to-field">
-         <name>movieUserRating</name>
-         <attribute-handle>
-            <attribute-declaring-type-name>com.cotescu.radu.cinebook.model.backend.Booking</attribute-declaring-type-name>
-            <attribute-name>movieUserRating</attribute-name>
-         </attribute-handle>
-         <column-handle>
-            <column-table-name>Booking</column-table-name>
-            <column-name>movie_user_rating</column-name>
-         </column-handle>
-      </mapping>
       <mapping type="one-to-one">
-         <name>scheduleEntry</name>
+         <name>postedby</name>
          <attribute-handle>
-            <attribute-declaring-type-name>com.cotescu.radu.cinebook.model.backend.Booking</attribute-declaring-type-name>
-            <attribute-name>scheduleEntry</attribute-name>
-         </attribute-handle>
-         <reference-descriptor-handle>
-            <descriptor-name>com.cotescu.radu.cinebook.model.backend.Schedule</descriptor-name>
-         </reference-descriptor-handle>
-         <indirection-type>value-holder-indirection</indirection-type>
-         <reference-handle>
-            <reference-table-name>Booking</reference-table-name>
-            <reference-name>fk_Booking_Schedule</reference-name>
-         </reference-handle>
-      </mapping>
-      <mapping type="direct-to-field">
-         <name>seats</name>
-         <attribute-handle>
-            <attribute-declaring-type-name>com.cotescu.radu.cinebook.model.backend.Booking</attribute-declaring-type-name>
-            <attribute-name>seats</attribute-name>
-         </attribute-handle>
-         <column-handle>
-            <column-table-name>Booking</column-table-name>
-            <column-name>seats</column-name>
-         </column-handle>
-      </mapping>
-      <mapping type="direct-to-field">
-         <name>status</name>
-         <attribute-handle>
-            <attribute-declaring-type-name>com.cotescu.radu.cinebook.model.backend.Booking</attribute-declaring-type-name>
-            <attribute-name>status</attribute-name>
-         </attribute-handle>
-         <column-handle>
-            <column-table-name>Booking</column-table-name>
-            <column-name>status</column-name>
-         </column-handle>
-      </mapping>
-      <mapping type="one-to-one">
-         <name>user</name>
-         <attribute-handle>
-            <attribute-declaring-type-name>com.cotescu.radu.cinebook.model.backend.Booking</attribute-declaring-type-name>
-            <attribute-name>user</attribute-name>
+            <attribute-declaring-type-name>com.cotescu.radu.cinebook.model.backend.UserComment</attribute-declaring-type-name>
+            <attribute-name>postedby</attribute-name>
          </attribute-handle>
          <reference-descriptor-handle>
             <descriptor-name>com.cotescu.radu.cinebook.model.backend.User</descriptor-name>
          </reference-descriptor-handle>
          <indirection-type>value-holder-indirection</indirection-type>
          <reference-handle>
-            <reference-table-name>Booking</reference-table-name>
-            <reference-name>fk_Booking_User</reference-name>
+            <reference-table-name>UserComment</reference-table-name>
+            <reference-name>fk_UserComments_ByUser</reference-name>
          </reference-handle>
+      </mapping>
+      <mapping type="one-to-one">
+         <name>postedto</name>
+         <attribute-handle>
+            <attribute-declaring-type-name>com.cotescu.radu.cinebook.model.backend.UserComment</attribute-declaring-type-name>
+            <attribute-name>postedto</attribute-name>
+         </attribute-handle>
+         <reference-descriptor-handle>
+            <descriptor-name>com.cotescu.radu.cinebook.model.backend.User</descriptor-name>
+         </reference-descriptor-handle>
+         <indirection-type>value-holder-indirection</indirection-type>
+         <reference-handle>
+            <reference-table-name>UserComment</reference-table-name>
+            <reference-name>fk_UserComments_ToUser</reference-name>
+         </reference-handle>
+      </mapping>
+      <mapping type="direct-to-field">
+         <name>rating</name>
+         <attribute-handle>
+            <attribute-declaring-type-name>com.cotescu.radu.cinebook.model.backend.UserComment</attribute-declaring-type-name>
+            <attribute-name>rating</attribute-name>
+         </attribute-handle>
+         <column-handle>
+            <column-table-name>UserComment</column-table-name>
+            <column-name>rating</column-name>
+         </column-handle>
       </mapping>
    </mappings>
    <primary-table-handle>
-      <table-name>Booking</table-name>
+      <table-name>UserComment</table-name>
    </primary-table-handle>
    <uses-sequencing>true</uses-sequencing>
-   <sequence-number-name>BOOKING_SEQ</sequence-number-name>
+   <sequence-number-name>USERCOMMENT_SEQ</sequence-number-name>
    <sequence-number-table-handle>
-      <table-name>Booking</table-name>
+      <table-name>UserComment</table-name>
    </sequence-number-table-handle>
    <sequence-number-column-handle>
-      <column-table-name>Booking</column-table-name>
+      <column-table-name>UserComment</column-table-name>
       <column-name>id</column-name>
    </sequence-number-column-handle>
 </descriptor>

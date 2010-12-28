@@ -13,9 +13,10 @@
             <print-date>true</print-date>
          </logging-options>
       </logging>
-      <primary-project xsi:type="xml">/home/radu/workspace/java/comp6003/cinebook/src/main/resources/cinebook-eclipselink.xml</primary-project>
+      <primary-project xsi:type="xml">cinebook-eclipselink.xml</primary-project>
       <login xsi:type="database-login">
          <platform-class>org.eclipse.persistence.platform.database.MySQLPlatform</platform-class>
+         <password></password>
          <sequencing>
             <default-sequence xsi:type="table-sequence">
                <name>sequencer</name>
@@ -26,6 +27,7 @@
          </sequencing>
          <driver-class>com.mysql.jdbc.Driver</driver-class>
          <connection-url>jdbc:mysql://devmachine/cinebook</connection-url>
+         <bind-all-parameters>false</bind-all-parameters>
          <struct-converters/>
       </login>
    </session>

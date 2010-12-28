@@ -49,6 +49,45 @@
                   <bind-all-parameters>true</bind-all-parameters>
                </relational-options>
             </query>
+            <query type="relational-read-object">
+               <name>getUserById</name>
+               <parameter-list>
+                  <query-parameter>
+                     <name>id</name>
+                     <type-handle>
+                        <type-name>int</type-name>
+                     </type-handle>
+                  </query-parameter>
+               </parameter-list>
+               <relational-options>
+                  <format type="expression">
+                     <main-compound-expression type="compound">
+                        <operator-type>AND</operator-type>
+                        <expression-list>
+                           <expression type="basic">
+                              <operator-type>EQUAL</operator-type>
+                              <first-argument type="queryable">
+                                 <queryable-argument-element>
+                                    <queryable-handle>
+                                       <mapping-descriptor-name>com.cotescu.radu.cinebook.model.backend.User</mapping-descriptor-name>
+                                       <queryable-name>id</queryable-name>
+                                    </queryable-handle>
+                                 </queryable-argument-element>
+                              </first-argument>
+                              <second-argument type="parm">
+                                 <query-parameter-handle>
+                                    <class-descriptor-name>com.cotescu.radu.cinebook.model.backend.User</class-descriptor-name>
+                                    <query-signature>getUserById(int)</query-signature>
+                                    <query-parameter-name>id</query-parameter-name>
+                                 </query-parameter-handle>
+                              </second-argument>
+                           </expression>
+                        </expression-list>
+                     </main-compound-expression>
+                  </format>
+                  <bind-all-parameters>true</bind-all-parameters>
+               </relational-options>
+            </query>
          </query-list>
          <insert-query type="insert">
             <relational-options>
@@ -162,4 +201,13 @@
    <primary-table-handle>
       <table-name>User</table-name>
    </primary-table-handle>
+   <uses-sequencing>true</uses-sequencing>
+   <sequence-number-name>USER_SEQ</sequence-number-name>
+   <sequence-number-table-handle>
+      <table-name>User</table-name>
+   </sequence-number-table-handle>
+   <sequence-number-column-handle>
+      <column-table-name>User</column-table-name>
+      <column-name>id</column-name>
+   </sequence-number-column-handle>
 </descriptor>

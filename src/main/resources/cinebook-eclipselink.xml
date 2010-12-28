@@ -59,6 +59,10 @@
             </attribute-mapping>
          </attribute-mappings>
          <descriptor-type>independent</descriptor-type>
+         <sequencing>
+            <sequence-name>BOOKING_SEQ</sequence-name>
+            <sequence-field table="Booking" name="id"/>
+         </sequencing>
          <instantiation/>
          <copying xsi:type="instantiation-copy-policy"/>
          <tables>
@@ -114,6 +118,10 @@
             </attribute-mapping>
          </attribute-mappings>
          <descriptor-type>independent</descriptor-type>
+         <sequencing>
+            <sequence-name>FRIEND_SEQ</sequence-name>
+            <sequence-field table="Friend" name="id"/>
+         </sequencing>
          <instantiation/>
          <copying xsi:type="instantiation-copy-policy"/>
          <tables>
@@ -200,6 +208,10 @@
             </attribute-mapping>
          </attribute-mappings>
          <descriptor-type>independent</descriptor-type>
+         <sequencing>
+            <sequence-name>MOVIE_SEQ</sequence-name>
+            <sequence-field table="Movie" name="id"/>
+         </sequencing>
          <instantiation/>
          <copying xsi:type="instantiation-copy-policy"/>
          <tables>
@@ -259,6 +271,10 @@
             </attribute-mapping>
          </attribute-mappings>
          <descriptor-type>independent</descriptor-type>
+         <sequencing>
+            <sequence-name>MOVIECOMMENT_SEQ</sequence-name>
+            <sequence-field table="MovieComment" name="id"/>
+         </sequencing>
          <instantiation/>
          <copying xsi:type="instantiation-copy-policy"/>
          <tables>
@@ -303,6 +319,10 @@
             </attribute-mapping>
          </attribute-mappings>
          <descriptor-type>independent</descriptor-type>
+         <sequencing>
+            <sequence-name>SCHEDULE_SEQ</sequence-name>
+            <sequence-field table="Schedule" name="id"/>
+         </sequencing>
          <instantiation/>
          <copying xsi:type="instantiation-copy-policy"/>
          <tables>
@@ -330,6 +350,24 @@
                   <arguments>
                      <argument name="email">
                         <type>java.lang.String</type>
+                     </argument>
+                  </arguments>
+                  <bind-all-parameters>true</bind-all-parameters>
+                  <reference-class>com.cotescu.radu.cinebook.model.backend.User</reference-class>
+                  <outer-join-subclasses>false</outer-join-subclasses>
+               </query>
+               <query name="getUserById" xsi:type="read-object-query">
+                  <criteria operator="equal" xsi:type="relation-expression">
+                     <left name="id" xsi:type="query-key-expression">
+                        <base xsi:type="base-expression"/>
+                     </left>
+                     <right xsi:type="parameter-expression">
+                        <parameter name="id" xsi:type="column"/>
+                     </right>
+                  </criteria>
+                  <arguments>
+                     <argument name="id">
+                        <type>int</type>
                      </argument>
                   </arguments>
                   <bind-all-parameters>true</bind-all-parameters>
@@ -365,10 +403,77 @@
             </attribute-mapping>
          </attribute-mappings>
          <descriptor-type>independent</descriptor-type>
+         <sequencing>
+            <sequence-name>USER_SEQ</sequence-name>
+            <sequence-field table="User" name="id"/>
+         </sequencing>
          <instantiation/>
          <copying xsi:type="instantiation-copy-policy"/>
          <tables>
             <table name="User"/>
+         </tables>
+      </class-mapping-descriptor>
+      <class-mapping-descriptor xsi:type="relational-class-mapping-descriptor">
+         <class>com.cotescu.radu.cinebook.model.backend.UserComment</class>
+         <alias>Usercomments</alias>
+         <primary-key>
+            <field table="UserComment" name="id" xsi:type="column"/>
+         </primary-key>
+         <events/>
+         <querying/>
+         <attribute-mappings>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>commentText</attribute-name>
+               <field table="UserComment" name="comment_text" xsi:type="column"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>id</attribute-name>
+               <field table="UserComment" name="id" xsi:type="column"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="one-to-one-mapping">
+               <attribute-name>postedby</attribute-name>
+               <reference-class>com.cotescu.radu.cinebook.model.backend.User</reference-class>
+               <foreign-key>
+                  <field-reference>
+                     <source-field table="UserComment" name="postedBy" xsi:type="column"/>
+                     <target-field table="User" name="id" xsi:type="column"/>
+                  </field-reference>
+               </foreign-key>
+               <foreign-key-fields>
+                  <field table="UserComment" name="postedBy" xsi:type="column"/>
+               </foreign-key-fields>
+               <indirection xsi:type="value-holder-indirection-policy"/>
+               <selection-query xsi:type="read-object-query"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="one-to-one-mapping">
+               <attribute-name>postedto</attribute-name>
+               <reference-class>com.cotescu.radu.cinebook.model.backend.User</reference-class>
+               <foreign-key>
+                  <field-reference>
+                     <source-field table="UserComment" name="postedTo" xsi:type="column"/>
+                     <target-field table="User" name="id" xsi:type="column"/>
+                  </field-reference>
+               </foreign-key>
+               <foreign-key-fields>
+                  <field table="UserComment" name="postedTo" xsi:type="column"/>
+               </foreign-key-fields>
+               <indirection xsi:type="value-holder-indirection-policy"/>
+               <selection-query xsi:type="read-object-query"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>rating</attribute-name>
+               <field table="UserComment" name="rating" xsi:type="column"/>
+            </attribute-mapping>
+         </attribute-mappings>
+         <descriptor-type>independent</descriptor-type>
+         <sequencing>
+            <sequence-name>USERCOMMENT_SEQ</sequence-name>
+            <sequence-field table="UserComment" name="id"/>
+         </sequencing>
+         <instantiation/>
+         <copying xsi:type="instantiation-copy-policy"/>
+         <tables>
+            <table name="UserComment"/>
          </tables>
       </class-mapping-descriptor>
    </class-mapping-descriptors>

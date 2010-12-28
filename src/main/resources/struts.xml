@@ -7,11 +7,19 @@
 		<action name="signIn" class="com.cotescu.radu.struts.actions.SignInAction">
 			<result name="success" type="redirectAction">home</result>
 			<result name="input">/pages/login.jsp</result>
-			<result name="failed">/pages/login.jsp</result>		
+			<result name="failed">/pages/login.jsp</result>
 		</action>
-		
+
 		<action name="signOut" class="com.cotescu.radu.struts.actions.SignOutAction">
 			<result name="success" type="redirectAction">index</result>
+		</action>
+	</package>
+
+	<package name="user" extends="struts-default" namespace="/user">
+		<action name="postCommentToUserPage" class="com.cotescu.radu.struts.actions.user.UserActions" method="postCommentToUserPage">
+			<result name="success" type="redirectAction">userProfile?id=${friendID}</result>
+			<result name="input">/pages/userProfile.jsp</result>
+			<result name="error">/pages/error.jsp</result>
 		</action>
 	</package>
 </struts>

@@ -38,7 +38,7 @@
 							<s:a href="%{home}" title="Home">Home</s:a>
 					</li>
 					<li>
-							<s:a href="%{update}" title="Your profile">Hello, ${session.user.firstname}</s:a>
+							<s:a href="%{update}" title="Your profile">Hello, ${session.user.firstName}</s:a>
 					</li>
 					<li>
 					    	<s:a href="%{signOut}" title="Sign Out">Sign Out</s:a>

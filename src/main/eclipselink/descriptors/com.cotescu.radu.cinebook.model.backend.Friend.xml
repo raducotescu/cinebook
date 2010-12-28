@@ -107,4 +107,13 @@
    <primary-table-handle>
       <table-name>Friend</table-name>
    </primary-table-handle>
+   <uses-sequencing>true</uses-sequencing>
+   <sequence-number-name>FRIEND_SEQ</sequence-number-name>
+   <sequence-number-table-handle>
+      <table-name>Friend</table-name>
+   </sequence-number-table-handle>
+   <sequence-number-column-handle>
+      <column-table-name>Friend</column-table-name>
+      <column-name>id</column-name>
+   </sequence-number-column-handle>
 </descriptor>
