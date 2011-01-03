@@ -8,7 +8,6 @@
 <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/favicon.ico" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css" />
 <s:url var="appcontext" value="/" />
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/uar-utils.js"></script>
 </head>
 <body>
 <div id="wrapper">
@@ -16,12 +15,7 @@
 		<s:url var="index" action="index" namespace="/" />
 		<s:url var="home" action="home" namespace="/" />
 			<div id="logo">
-				<s:if test="#session.user==null">
-					<s:a href="%{index}"><img src="${pageContext.request.contextPath}/images/logo.png" alt="logo"/></s:a>
-				</s:if>
-				<s:else>
-					<s:a href="%{home}"><img src="${pageContext.request.contextPath}/images/logo.png" alt="logo"/></s:a>
-				</s:else>
+				<s:a href="%{index}"><img src="${pageContext.request.contextPath}/images/logo.png" alt="logo"/></s:a>
 			</div>
 			<div id="userControls">
 				<ul>

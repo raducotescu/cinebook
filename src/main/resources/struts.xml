@@ -3,23 +3,31 @@
           "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"       
           "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-	<package name="home" extends="struts-default" namespace="/">
-		<action name="signIn" class="com.cotescu.radu.struts.actions.SignInAction">
-			<result name="success" type="redirectAction">home</result>
+	<package name="home" namespace="/" extends="struts-default">
+		
+		<action name="index" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.BaseAction">
+			<result name="success">/pages/home.jsp</result>
+		</action>
+		
+		<action name="signIn" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.SignInAction">
+			<result name="success" type="redirectAction">index</result>
 			<result name="input">/pages/login.jsp</result>
 			<result name="failed">/pages/login.jsp</result>
 		</action>
 
-		<action name="signOut" class="com.cotescu.radu.struts.actions.SignOutAction">
+		<action name="signOut" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.SignOutAction">
 			<result name="success" type="redirectAction">index</result>
 		</action>
 	</package>
 
 	<package name="user" extends="struts-default" namespace="/user">
-		<action name="postCommentToUserPage" class="com.cotescu.radu.struts.actions.user.UserActions" method="postCommentToUserPage">
+		<action name="postCommentToUserPage" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.user.UserActions" method="postCommentToUserPage">
 			<result name="success" type="redirectAction">userProfile?id=${friendID}</result>
 			<result name="input">/pages/userProfile.jsp</result>
 			<result name="error">/pages/error.jsp</result>
+		</action>
+		<action name="viewFriends" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.user.UserActions" method="viewFriends">
+			<result name="success">/pages/friends.jsp</result>
 		</action>
 	</package>
 </struts>

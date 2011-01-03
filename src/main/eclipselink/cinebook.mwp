@@ -5,23 +5,23 @@
    <schema-version>7.0</schema-version>
    <class-repository>
       <user-type-names>
-         <name>com.cotescu.radu.cinebook.model.backend.Booking</name>
-         <name>com.cotescu.radu.cinebook.model.backend.Friend</name>
-         <name>com.cotescu.radu.cinebook.model.backend.Movie</name>
-         <name>com.cotescu.radu.cinebook.model.backend.MovieComment</name>
-         <name>com.cotescu.radu.cinebook.model.backend.Schedule</name>
-         <name>com.cotescu.radu.cinebook.model.backend.User</name>
-         <name>com.cotescu.radu.cinebook.model.backend.UserComment</name>
+         <name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Booking</name>
+         <name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Friend</name>
+         <name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</name>
+         <name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.MovieComment</name>
+         <name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Schedule</name>
+         <name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.User</name>
+         <name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.UserComment</name>
       </user-type-names>
    </class-repository>
    <descriptor-names>
-      <descriptor-name>com.cotescu.radu.cinebook.model.backend.Booking</descriptor-name>
-      <descriptor-name>com.cotescu.radu.cinebook.model.backend.Friend</descriptor-name>
-      <descriptor-name>com.cotescu.radu.cinebook.model.backend.Movie</descriptor-name>
-      <descriptor-name>com.cotescu.radu.cinebook.model.backend.MovieComment</descriptor-name>
-      <descriptor-name>com.cotescu.radu.cinebook.model.backend.Schedule</descriptor-name>
-      <descriptor-name>com.cotescu.radu.cinebook.model.backend.User</descriptor-name>
-      <descriptor-name>com.cotescu.radu.cinebook.model.backend.UserComment</descriptor-name>
+      <descriptor-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Booking</descriptor-name>
+      <descriptor-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Friend</descriptor-name>
+      <descriptor-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</descriptor-name>
+      <descriptor-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.MovieComment</descriptor-name>
+      <descriptor-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Schedule</descriptor-name>
+      <descriptor-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.User</descriptor-name>
+      <descriptor-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.UserComment</descriptor-name>
    </descriptor-names>
    <defaults-policy type="relational">
       <use-method-accessing>false</use-method-accessing>

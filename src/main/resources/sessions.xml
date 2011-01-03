@@ -20,6 +20,7 @@
          <sequencing>
             <default-sequence xsi:type="table-sequence">
                <name>sequencer</name>
+               <preallocation-size>1</preallocation-size>
                <table>SEQUENCER</table>
                <name-field>SEQUENCE_NAME</name-field>
                <counter-field>SEQUENCE_COUNTER</counter-field>

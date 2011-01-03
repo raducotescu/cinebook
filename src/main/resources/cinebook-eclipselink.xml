@@ -3,7 +3,7 @@
    <name>cinebook</name>
    <class-mapping-descriptors>
       <class-mapping-descriptor xsi:type="relational-class-mapping-descriptor">
-         <class>com.cotescu.radu.cinebook.model.backend.Booking</class>
+         <class>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Booking</class>
          <alias>Booking</alias>
          <primary-key>
             <field table="Booking" name="id" xsi:type="column"/>
@@ -21,7 +21,7 @@
             </attribute-mapping>
             <attribute-mapping xsi:type="one-to-one-mapping">
                <attribute-name>scheduleEntry</attribute-name>
-               <reference-class>com.cotescu.radu.cinebook.model.backend.Schedule</reference-class>
+               <reference-class>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Schedule</reference-class>
                <foreign-key>
                   <field-reference>
                      <source-field table="Booking" name="schedule_entry_id" xsi:type="column"/>
@@ -44,7 +44,7 @@
             </attribute-mapping>
             <attribute-mapping xsi:type="one-to-one-mapping">
                <attribute-name>user</attribute-name>
-               <reference-class>com.cotescu.radu.cinebook.model.backend.User</reference-class>
+               <reference-class>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.User</reference-class>
                <foreign-key>
                   <field-reference>
                      <source-field table="Booking" name="user_id" xsi:type="column"/>
@@ -70,7 +70,7 @@
          </tables>
       </class-mapping-descriptor>
       <class-mapping-descriptor xsi:type="relational-class-mapping-descriptor">
-         <class>com.cotescu.radu.cinebook.model.backend.Friend</class>
+         <class>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Friend</class>
          <alias>Friend</alias>
          <primary-key>
             <field table="Friend" name="id" xsi:type="column"/>
@@ -88,7 +88,7 @@
             </attribute-mapping>
             <attribute-mapping xsi:type="one-to-one-mapping">
                <attribute-name>user1</attribute-name>
-               <reference-class>com.cotescu.radu.cinebook.model.backend.User</reference-class>
+               <reference-class>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.User</reference-class>
                <foreign-key>
                   <field-reference>
                      <source-field table="Friend" name="user_id" xsi:type="column"/>
@@ -103,7 +103,7 @@
             </attribute-mapping>
             <attribute-mapping xsi:type="one-to-one-mapping">
                <attribute-name>user2</attribute-name>
-               <reference-class>com.cotescu.radu.cinebook.model.backend.User</reference-class>
+               <reference-class>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.User</reference-class>
                <foreign-key>
                   <field-reference>
                      <source-field table="Friend" name="friend_id" xsi:type="column"/>
@@ -129,7 +129,7 @@
          </tables>
       </class-mapping-descriptor>
       <class-mapping-descriptor xsi:type="relational-class-mapping-descriptor">
-         <class>com.cotescu.radu.cinebook.model.backend.Movie</class>
+         <class>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</class>
          <alias>Movie</alias>
          <primary-key>
             <field table="Movie" name="id" xsi:type="column"/>
@@ -143,7 +143,7 @@
             </attribute-mapping>
             <attribute-mapping xsi:type="one-to-many-mapping">
                <attribute-name>comments</attribute-name>
-               <reference-class>com.cotescu.radu.cinebook.model.backend.MovieComment</reference-class>
+               <reference-class>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.MovieComment</reference-class>
                <target-foreign-key>
                   <field-reference>
                      <source-field table="MovieComment" name="movie_id" xsi:type="column"/>
@@ -219,7 +219,7 @@
          </tables>
       </class-mapping-descriptor>
       <class-mapping-descriptor xsi:type="relational-class-mapping-descriptor">
-         <class>com.cotescu.radu.cinebook.model.backend.MovieComment</class>
+         <class>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.MovieComment</class>
          <alias>Moviecomment</alias>
          <primary-key>
             <field table="MovieComment" name="id" xsi:type="column"/>
@@ -241,7 +241,7 @@
             </attribute-mapping>
             <attribute-mapping xsi:type="one-to-one-mapping">
                <attribute-name>movie</attribute-name>
-               <reference-class>com.cotescu.radu.cinebook.model.backend.Movie</reference-class>
+               <reference-class>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</reference-class>
                <foreign-key>
                   <field-reference>
                      <source-field table="MovieComment" name="movie_id" xsi:type="column"/>
@@ -256,7 +256,7 @@
             </attribute-mapping>
             <attribute-mapping xsi:type="one-to-one-mapping">
                <attribute-name>user</attribute-name>
-               <reference-class>com.cotescu.radu.cinebook.model.backend.User</reference-class>
+               <reference-class>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.User</reference-class>
                <foreign-key>
                   <field-reference>
                      <source-field table="MovieComment" name="user_id" xsi:type="column"/>
@@ -282,7 +282,7 @@
          </tables>
       </class-mapping-descriptor>
       <class-mapping-descriptor xsi:type="relational-class-mapping-descriptor">
-         <class>com.cotescu.radu.cinebook.model.backend.Schedule</class>
+         <class>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Schedule</class>
          <alias>Schedule</alias>
          <primary-key>
             <field table="Schedule" name="id" xsi:type="column"/>
@@ -296,7 +296,7 @@
             </attribute-mapping>
             <attribute-mapping xsi:type="one-to-one-mapping">
                <attribute-name>movie</attribute-name>
-               <reference-class>com.cotescu.radu.cinebook.model.backend.Movie</reference-class>
+               <reference-class>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</reference-class>
                <foreign-key>
                   <field-reference>
                      <source-field table="Schedule" name="movie" xsi:type="column"/>
@@ -330,7 +330,7 @@
          </tables>
       </class-mapping-descriptor>
       <class-mapping-descriptor xsi:type="relational-class-mapping-descriptor">
-         <class>com.cotescu.radu.cinebook.model.backend.User</class>
+         <class>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.User</class>
          <alias>User</alias>
          <primary-key>
             <field table="User" name="id" xsi:type="column"/>
@@ -353,7 +353,7 @@
                      </argument>
                   </arguments>
                   <bind-all-parameters>true</bind-all-parameters>
-                  <reference-class>com.cotescu.radu.cinebook.model.backend.User</reference-class>
+                  <reference-class>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.User</reference-class>
                   <outer-join-subclasses>false</outer-join-subclasses>
                </query>
                <query name="getUserById" xsi:type="read-object-query">
@@ -371,7 +371,7 @@
                      </argument>
                   </arguments>
                   <bind-all-parameters>true</bind-all-parameters>
-                  <reference-class>com.cotescu.radu.cinebook.model.backend.User</reference-class>
+                  <reference-class>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.User</reference-class>
                   <outer-join-subclasses>false</outer-join-subclasses>
                </query>
             </queries>
@@ -414,7 +414,7 @@
          </tables>
       </class-mapping-descriptor>
       <class-mapping-descriptor xsi:type="relational-class-mapping-descriptor">
-         <class>com.cotescu.radu.cinebook.model.backend.UserComment</class>
+         <class>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.UserComment</class>
          <alias>Usercomments</alias>
          <primary-key>
             <field table="UserComment" name="id" xsi:type="column"/>
@@ -432,7 +432,7 @@
             </attribute-mapping>
             <attribute-mapping xsi:type="one-to-one-mapping">
                <attribute-name>postedby</attribute-name>
-               <reference-class>com.cotescu.radu.cinebook.model.backend.User</reference-class>
+               <reference-class>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.User</reference-class>
                <foreign-key>
                   <field-reference>
                      <source-field table="UserComment" name="postedBy" xsi:type="column"/>
@@ -447,7 +447,7 @@
             </attribute-mapping>
             <attribute-mapping xsi:type="one-to-one-mapping">
                <attribute-name>postedto</attribute-name>
-               <reference-class>com.cotescu.radu.cinebook.model.backend.User</reference-class>
+               <reference-class>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.User</reference-class>
                <foreign-key>
                   <field-reference>
                      <source-field table="UserComment" name="postedTo" xsi:type="column"/>
