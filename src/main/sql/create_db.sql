@@ -34,6 +34,7 @@ CREATE  TABLE IF NOT EXISTS `cinebook`.`Movie` (
   `poster_location` VARCHAR(256) NOT NULL ,
   `rating` VARCHAR(45) NOT NULL ,
   `user_rating` FLOAT NULL ,
+  `year` INT NOT NULL ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) )
 ENGINE = InnoDB;

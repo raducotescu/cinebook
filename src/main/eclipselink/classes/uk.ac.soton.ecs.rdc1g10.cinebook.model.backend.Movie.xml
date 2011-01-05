@@ -25,12 +25,31 @@
       </class-attribute>
       <class-attribute>
          <name>comments</name>
-         <modifier>1</modifier>
+         <modifier>2</modifier>
          <type-declaration>
             <type-handle>
-               <type-name>java.lang.Object</type-name>
+               <type-name>java.util.Collection</type-name>
             </type-handle>
          </type-declaration>
+         <item-type-handle>
+            <type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.MovieComment</type-name>
+         </item-type-handle>
+         <get-method-handle>
+            <method-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</method-declaring-type-name>
+            <method-signature>getComments()</method-signature>
+         </get-method-handle>
+         <set-method-handle>
+            <method-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</method-declaring-type-name>
+            <method-signature>setComments(java.util.Collection)</method-signature>
+         </set-method-handle>
+         <add-method-handle>
+            <method-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</method-declaring-type-name>
+            <method-signature>addToComments(uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.MovieComment)</method-signature>
+         </add-method-handle>
+         <remove-method-handle>
+            <method-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</method-declaring-type-name>
+            <method-signature>removeFromComments(uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.MovieComment)</method-signature>
+         </remove-method-handle>
       </class-attribute>
       <class-attribute>
          <name>description</name>
@@ -185,12 +204,51 @@
             <method-signature>setUserRating(float)</method-signature>
          </set-method-handle>
       </class-attribute>
+      <class-attribute>
+         <name>year</name>
+         <modifier>2</modifier>
+         <type-declaration>
+            <type-handle>
+               <type-name>java.lang.Integer</type-name>
+            </type-handle>
+         </type-declaration>
+         <get-method-handle>
+            <method-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</method-declaring-type-name>
+            <method-signature>getYear()</method-signature>
+         </get-method-handle>
+         <set-method-handle>
+            <method-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</method-declaring-type-name>
+            <method-signature>setYear(java.lang.Integer)</method-signature>
+         </set-method-handle>
+      </class-attribute>
    </attributes>
    <methods>
       <method>
          <name>Movie</name>
          <constructor>true</constructor>
          <modifier>1</modifier>
+      </method>
+      <method>
+         <name>addToComments</name>
+         <modifier>1</modifier>
+         <return-type-declaration>
+            <type-handle>
+               <type-name>void</type-name>
+            </type-handle>
+         </return-type-declaration>
+         <method-parameters>
+            <method-parameter>
+               <type-declaration>
+                  <type-handle>
+                     <type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.MovieComment</type-name>
+                  </type-handle>
+               </type-declaration>
+            </method-parameter>
+         </method-parameters>
+         <accessed-attribute-handle>
+            <attribute-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</attribute-declaring-type-name>
+            <attribute-name>comments</attribute-name>
+         </accessed-attribute-handle>
       </method>
       <method>
          <name>getCast</name>
@@ -203,6 +261,19 @@
          <accessed-attribute-handle>
             <attribute-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</attribute-declaring-type-name>
             <attribute-name>cast</attribute-name>
+         </accessed-attribute-handle>
+      </method>
+      <method>
+         <name>getComments</name>
+         <modifier>4</modifier>
+         <return-type-declaration>
+            <type-handle>
+               <type-name>java.util.Collection</type-name>
+            </type-handle>
+         </return-type-declaration>
+         <accessed-attribute-handle>
+            <attribute-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</attribute-declaring-type-name>
+            <attribute-name>comments</attribute-name>
          </accessed-attribute-handle>
       </method>
       <method>
@@ -323,6 +394,41 @@
          </accessed-attribute-handle>
       </method>
       <method>
+         <name>getYear</name>
+         <modifier>1</modifier>
+         <return-type-declaration>
+            <type-handle>
+               <type-name>java.lang.Integer</type-name>
+            </type-handle>
+         </return-type-declaration>
+         <accessed-attribute-handle>
+            <attribute-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</attribute-declaring-type-name>
+            <attribute-name>year</attribute-name>
+         </accessed-attribute-handle>
+      </method>
+      <method>
+         <name>removeFromComments</name>
+         <modifier>1</modifier>
+         <return-type-declaration>
+            <type-handle>
+               <type-name>void</type-name>
+            </type-handle>
+         </return-type-declaration>
+         <method-parameters>
+            <method-parameter>
+               <type-declaration>
+                  <type-handle>
+                     <type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.MovieComment</type-name>
+                  </type-handle>
+               </type-declaration>
+            </method-parameter>
+         </method-parameters>
+         <accessed-attribute-handle>
+            <attribute-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</attribute-declaring-type-name>
+            <attribute-name>comments</attribute-name>
+         </accessed-attribute-handle>
+      </method>
+      <method>
          <name>setCast</name>
          <modifier>1</modifier>
          <return-type-declaration>
@@ -342,6 +448,28 @@
          <accessed-attribute-handle>
             <attribute-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</attribute-declaring-type-name>
             <attribute-name>cast</attribute-name>
+         </accessed-attribute-handle>
+      </method>
+      <method>
+         <name>setComments</name>
+         <modifier>4</modifier>
+         <return-type-declaration>
+            <type-handle>
+               <type-name>void</type-name>
+            </type-handle>
+         </return-type-declaration>
+         <method-parameters>
+            <method-parameter>
+               <type-declaration>
+                  <type-handle>
+                     <type-name>java.util.Collection</type-name>
+                  </type-handle>
+               </type-declaration>
+            </method-parameter>
+         </method-parameters>
+         <accessed-attribute-handle>
+            <attribute-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</attribute-declaring-type-name>
+            <attribute-name>comments</attribute-name>
          </accessed-attribute-handle>
       </method>
       <method>
@@ -540,6 +668,28 @@
          <accessed-attribute-handle>
             <attribute-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</attribute-declaring-type-name>
             <attribute-name>userRating</attribute-name>
+         </accessed-attribute-handle>
+      </method>
+      <method>
+         <name>setYear</name>
+         <modifier>1</modifier>
+         <return-type-declaration>
+            <type-handle>
+               <type-name>void</type-name>
+            </type-handle>
+         </return-type-declaration>
+         <method-parameters>
+            <method-parameter>
+               <type-declaration>
+                  <type-handle>
+                     <type-name>java.lang.Integer</type-name>
+                  </type-handle>
+               </type-declaration>
+            </method-parameter>
+         </method-parameters>
+         <accessed-attribute-handle>
+            <attribute-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</attribute-declaring-type-name>
+            <attribute-name>year</attribute-name>
          </accessed-attribute-handle>
       </method>
    </methods>

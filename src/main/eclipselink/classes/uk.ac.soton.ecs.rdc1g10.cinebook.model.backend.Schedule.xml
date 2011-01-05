@@ -52,7 +52,7 @@
          <modifier>2</modifier>
          <type-declaration>
             <type-handle>
-               <type-name>java.util.Calendar</type-name>
+               <type-name>java.util.Date</type-name>
             </type-handle>
          </type-declaration>
          <get-method-handle>
@@ -61,7 +61,7 @@
          </get-method-handle>
          <set-method-handle>
             <method-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Schedule</method-declaring-type-name>
-            <method-signature>setStartTime(java.util.Calendar)</method-signature>
+            <method-signature>setStartTime(java.util.Date)</method-signature>
          </set-method-handle>
       </class-attribute>
       <class-attribute>
@@ -132,7 +132,7 @@
          <modifier>1</modifier>
          <return-type-declaration>
             <type-handle>
-               <type-name>java.util.Calendar</type-name>
+               <type-name>java.util.Date</type-name>
             </type-handle>
          </return-type-declaration>
          <accessed-attribute-handle>
@@ -231,7 +231,7 @@
             <method-parameter>
                <type-declaration>
                   <type-handle>
-                     <type-name>java.util.Calendar</type-name>
+                     <type-name>java.util.Date</type-name>
                   </type-handle>
                </type-declaration>
             </method-parameter>

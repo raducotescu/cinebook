@@ -71,7 +71,6 @@
          <reference-descriptor-handle>
             <descriptor-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.MovieComment</descriptor-name>
          </reference-descriptor-handle>
-         <indirection-type>transparentIndirection</indirection-type>
          <reference-handle>
             <reference-table-name>MovieComment</reference-table-name>
             <reference-name>fk_MovieComment_Movie</reference-name>
@@ -187,6 +186,17 @@
          <column-handle>
             <column-table-name>Movie</column-table-name>
             <column-name>user_rating</column-name>
+         </column-handle>
+      </mapping>
+      <mapping type="direct-to-field">
+         <name>year</name>
+         <attribute-handle>
+            <attribute-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</attribute-declaring-type-name>
+            <attribute-name>year</attribute-name>
+         </attribute-handle>
+         <column-handle>
+            <column-table-name>Movie</column-table-name>
+            <column-name>year</column-name>
          </column-handle>
       </mapping>
    </mappings>

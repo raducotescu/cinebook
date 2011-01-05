@@ -151,13 +151,12 @@
                   </field-reference>
                </target-foreign-key>
                <container xsi:type="list-container-policy">
-                  <collection-type>org.eclipse.persistence.indirection.IndirectList</collection-type>
+                  <collection-type>java.util.Vector</collection-type>
                </container>
-               <indirection xsi:type="transparent-collection-indirection-policy"/>
                <selection-query xsi:type="read-all-query">
                   <outer-join-subclasses>true</outer-join-subclasses>
                   <container xsi:type="list-container-policy">
-                     <collection-type>org.eclipse.persistence.indirection.IndirectList</collection-type>
+                     <collection-type>java.util.Vector</collection-type>
                   </container>
                   <order-by-expressions>
                      <expression function="ascending" xsi:type="function-expression">
@@ -205,6 +204,10 @@
             <attribute-mapping xsi:type="direct-mapping">
                <attribute-name>userRating</attribute-name>
                <field table="Movie" name="user_rating" xsi:type="column"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>year</attribute-name>
+               <field table="Movie" name="year" xsi:type="column"/>
             </attribute-mapping>
          </attribute-mappings>
          <descriptor-type>independent</descriptor-type>

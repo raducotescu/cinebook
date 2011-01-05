@@ -108,6 +108,13 @@
 			<version>1.4</version>
 		</dependency>
 
+		<dependency>
+			<groupId>rome</groupId>
+			<artifactId>rome</artifactId>
+			<version>0.9</version>
+		</dependency>
+
+
 	</dependencies>
 
 	<description>An enterprise web application for cinemas</description>
@@ -128,6 +135,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
 				<configuration>
 					<source>1.6</source>
 					<target>1.6</target>

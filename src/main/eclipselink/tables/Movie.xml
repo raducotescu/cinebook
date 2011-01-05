@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <table>
    <short-name>Movie</short-name>
-   <last-refresh-timestamp>2010-12-28T15:19:10.612</last-refresh-timestamp>
+   <last-refresh-timestamp>2011-01-05T22:08:22.087</last-refresh-timestamp>
    <columns>
       <column>
          <name>cast</name>
@@ -52,6 +52,10 @@
          <name>user_rating</name>
          <type>real</type>
          <allows-null>true</allows-null>
+      </column>
+      <column>
+         <name>year</name>
+         <type>integer</type>
       </column>
    </columns>
 </table>

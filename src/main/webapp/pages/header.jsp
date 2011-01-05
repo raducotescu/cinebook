@@ -36,6 +36,9 @@
 							<s:a href="%{update}" title="Your profile">Hello, ${session.user.firstName}</s:a>
 					</li>
 					<li>
+							<s:if test="#session.user.role == 1">
+							<s:a action="controlPanel" namespace="/admin" title="Control Panel">Control Panel</s:a>
+							</s:if>
 					    	<s:a href="%{signOut}" title="Sign Out">Sign Out</s:a>
 					</li>
 						</s:else>

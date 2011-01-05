@@ -37,4 +37,17 @@
 			<result name="success">/pages/friend.jsp</result>
 		</action>
 	</package>
+	<package name="feeds" extends="basic" namespace="/feeds">
+		<action name="importedFeed" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.ie.FeederActions" method="importedFeed">
+			<result name="success">/pages/importedfeed.jsp</result>
+		</action>
+	</package>
+	<package name="movies" extends="basic" namespace="/movies">
+		<action name="currentSchedule" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.movies.MoviesActions" method="currentSchedule">
+			<result name="success">/pages/currentSchedule.jsp</result>
+		</action>
+		<action name="movieDetails" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.movies.MoviesActions" method="movieDetails">
+			<result name="success">/pages/movieDetails.jsp</result>
+		</action>
+	</package>
 </struts>
