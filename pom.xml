@@ -8,6 +8,15 @@
 	<packaging>war</packaging>
 	<name>CineBook</name>
 
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-changelog-plugin</artifactId>
+				<version>2.2</version>
+			</plugin>
+		</plugins>
+	</reporting>
 	<properties>
 		<struts2.version>2.2.1.1</struts2.version>
 	</properties>
@@ -118,6 +127,11 @@
 	</dependencies>
 
 	<description>An enterprise web application for cinemas</description>
+	<scm>
+		<connection>scm:git:git://github.com/raducotescu/cinebook.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com:raducotescu/cinebook.git</developerConnection>
+		<url>https://github.com/raducotescu/cinebook</url>
+	</scm>
 	<organization>
 		<name>School of Electronics and Computer Science, University of Southampton</name>
 		<url>http://www.ecs.soton.ac.uk</url>
