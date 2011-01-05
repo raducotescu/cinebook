@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <table>
    <short-name>UserComment</short-name>
-   <last-refresh-timestamp>2010-12-28T15:31:04.761</last-refresh-timestamp>
+   <last-refresh-timestamp>2011-01-04T20:32:09.132</last-refresh-timestamp>
    <columns>
       <column>
          <name>comment_text</name>
          <type>varchar</type>
          <size>1000</size>
+      </column>
+      <column>
+         <name>date_posted</name>
+         <type>timestamp</type>
       </column>
       <column>
          <name>id</name>

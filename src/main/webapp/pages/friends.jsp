@@ -1,13 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s" %>
 <jsp:include page="header.jsp">
-	<jsp:param value="#session.user.firstName" name="title"/>
+	<jsp:param value="My Friends" name="title"/>
 </jsp:include>
 <s:if test="friends!=null">
 	<ul>
 		<s:iterator value="friends">
 			<li>
-				${firstName} ${lastName}
+				<s:url action="friend" var="friendpage" namespace="/user">
+					<s:param name="friendID">${id}</s:param>
+				</s:url>
+				<s:a href="%{friendpage}">${firstName} ${lastName}</s:a>
 			</li>
 		</s:iterator>
 	</ul>

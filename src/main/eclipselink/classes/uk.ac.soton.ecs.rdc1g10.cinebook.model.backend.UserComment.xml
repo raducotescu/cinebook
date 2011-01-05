@@ -24,6 +24,23 @@
          </set-method-handle>
       </class-attribute>
       <class-attribute>
+         <name>datePosted</name>
+         <modifier>2</modifier>
+         <type-declaration>
+            <type-handle>
+               <type-name>java.util.Date</type-name>
+            </type-handle>
+         </type-declaration>
+         <get-method-handle>
+            <method-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.UserComment</method-declaring-type-name>
+            <method-signature>getDatePosted()</method-signature>
+         </get-method-handle>
+         <set-method-handle>
+            <method-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.UserComment</method-declaring-type-name>
+            <method-signature>setDatePosted(java.util.Date)</method-signature>
+         </set-method-handle>
+      </class-attribute>
+      <class-attribute>
          <name>id</name>
          <modifier>2</modifier>
          <type-declaration>
@@ -126,6 +143,19 @@
          </accessed-attribute-handle>
       </method>
       <method>
+         <name>getDatePosted</name>
+         <modifier>1</modifier>
+         <return-type-declaration>
+            <type-handle>
+               <type-name>java.util.Date</type-name>
+            </type-handle>
+         </return-type-declaration>
+         <accessed-attribute-handle>
+            <attribute-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.UserComment</attribute-declaring-type-name>
+            <attribute-name>datePosted</attribute-name>
+         </accessed-attribute-handle>
+      </method>
+      <method>
          <name>getId</name>
          <modifier>1</modifier>
          <return-type-declaration>
@@ -223,6 +253,28 @@
          <accessed-attribute-handle>
             <attribute-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.UserComment</attribute-declaring-type-name>
             <attribute-name>commentText</attribute-name>
+         </accessed-attribute-handle>
+      </method>
+      <method>
+         <name>setDatePosted</name>
+         <modifier>1</modifier>
+         <return-type-declaration>
+            <type-handle>
+               <type-name>void</type-name>
+            </type-handle>
+         </return-type-declaration>
+         <method-parameters>
+            <method-parameter>
+               <type-declaration>
+                  <type-handle>
+                     <type-name>java.util.Date</type-name>
+                  </type-handle>
+               </type-declaration>
+            </method-parameter>
+         </method-parameters>
+         <accessed-attribute-handle>
+            <attribute-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.UserComment</attribute-declaring-type-name>
+            <attribute-name>datePosted</attribute-name>
          </accessed-attribute-handle>
       </method>
       <method>

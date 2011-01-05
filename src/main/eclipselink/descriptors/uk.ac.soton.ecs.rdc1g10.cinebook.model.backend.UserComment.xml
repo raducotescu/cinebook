@@ -63,6 +63,17 @@
          </column-handle>
       </mapping>
       <mapping type="direct-to-field">
+         <name>datePosted</name>
+         <attribute-handle>
+            <attribute-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.UserComment</attribute-declaring-type-name>
+            <attribute-name>datePosted</attribute-name>
+         </attribute-handle>
+         <column-handle>
+            <column-table-name>UserComment</column-table-name>
+            <column-name>date_posted</column-name>
+         </column-handle>
+      </mapping>
+      <mapping type="direct-to-field">
          <name>id</name>
          <attribute-handle>
             <attribute-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.UserComment</attribute-declaring-type-name>

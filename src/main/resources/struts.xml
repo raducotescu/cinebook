@@ -3,7 +3,12 @@
           "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"       
           "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-	<package name="home" namespace="/" extends="struts-default">
+
+	<package name="basic" namespace="/" extends="struts-default">
+	
+		<global-results>
+			<result name="error">/pages/error.jsp</result>
+		</global-results>
 		
 		<action name="index" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.BaseAction">
 			<result name="success">/pages/home.jsp</result>
@@ -20,14 +25,16 @@
 		</action>
 	</package>
 
-	<package name="user" extends="struts-default" namespace="/user">
-		<action name="postCommentToUserPage" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.user.UserActions" method="postCommentToUserPage">
-			<result name="success" type="redirectAction">userProfile?id=${friendID}</result>
-			<result name="input">/pages/userProfile.jsp</result>
-			<result name="error">/pages/error.jsp</result>
+	<package name="user" extends="basic" namespace="/user">
+		<action name="postComment" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.user.UserActions" method="postCommentToUserPage">
+			<result name="success" type="redirectAction">friend?friendID=${friendID}</result>
+			<result name="input" type="redirectAction">friend?friendID=${friendID}</result>
 		</action>
-		<action name="viewFriends" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.user.UserActions" method="viewFriends">
+		<action name="friends" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.user.UserActions" method="viewFriends">
 			<result name="success">/pages/friends.jsp</result>
+		</action>
+		<action name="friend" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.user.UserActions" method="friendPage">
+			<result name="success">/pages/friend.jsp</result>
 		</action>
 	</package>
 </struts>

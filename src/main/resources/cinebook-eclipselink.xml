@@ -427,6 +427,10 @@
                <field table="UserComment" name="comment_text" xsi:type="column"/>
             </attribute-mapping>
             <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>datePosted</attribute-name>
+               <field table="UserComment" name="date_posted" xsi:type="column"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
                <attribute-name>id</attribute-name>
                <field table="UserComment" name="id" xsi:type="column"/>
             </attribute-mapping>

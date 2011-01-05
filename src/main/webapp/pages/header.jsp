@@ -7,6 +7,7 @@
 <title>${param.title} - CineBook</title>
 <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/favicon.ico" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/plugins/ckeditor/ckeditor.js"></script>
 <s:url var="appcontext" value="/" />
 </head>
 <body>
