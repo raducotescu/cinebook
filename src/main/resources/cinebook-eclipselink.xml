@@ -15,10 +15,6 @@
                <attribute-name>id</attribute-name>
                <field table="Booking" name="id" xsi:type="column"/>
             </attribute-mapping>
-            <attribute-mapping xsi:type="direct-mapping">
-               <attribute-name>movieUserRating</attribute-name>
-               <field table="Booking" name="movie_user_rating" xsi:type="column"/>
-            </attribute-mapping>
             <attribute-mapping xsi:type="one-to-one-mapping">
                <attribute-name>scheduleEntry</attribute-name>
                <reference-class>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Schedule</reference-class>
@@ -190,8 +186,8 @@
                <field table="Movie" name="id" xsi:type="column"/>
             </attribute-mapping>
             <attribute-mapping xsi:type="direct-mapping">
-               <attribute-name>posterLocation</attribute-name>
-               <field table="Movie" name="poster_location" xsi:type="column"/>
+               <attribute-name>poster</attribute-name>
+               <field table="Movie" name="poster" xsi:type="column"/>
             </attribute-mapping>
             <attribute-mapping xsi:type="direct-mapping">
                <attribute-name>rating</attribute-name>

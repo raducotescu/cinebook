@@ -90,7 +90,7 @@
          <modifier>2</modifier>
          <type-declaration>
             <type-handle>
-               <type-name>int</type-name>
+               <type-name>java.lang.Integer</type-name>
             </type-handle>
          </type-declaration>
          <get-method-handle>
@@ -99,7 +99,7 @@
          </get-method-handle>
          <set-method-handle>
             <method-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</method-declaring-type-name>
-            <method-signature>setDuration(int)</method-signature>
+            <method-signature>setDuration(java.lang.Integer)</method-signature>
          </set-method-handle>
       </class-attribute>
       <class-attribute>
@@ -124,7 +124,7 @@
          <modifier>2</modifier>
          <type-declaration>
             <type-handle>
-               <type-name>int</type-name>
+               <type-name>java.lang.Integer</type-name>
             </type-handle>
          </type-declaration>
          <get-method-handle>
@@ -133,11 +133,11 @@
          </get-method-handle>
          <set-method-handle>
             <method-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</method-declaring-type-name>
-            <method-signature>setId(int)</method-signature>
+            <method-signature>setId(java.lang.Integer)</method-signature>
          </set-method-handle>
       </class-attribute>
       <class-attribute>
-         <name>posterLocation</name>
+         <name>poster</name>
          <modifier>2</modifier>
          <type-declaration>
             <type-handle>
@@ -146,11 +146,11 @@
          </type-declaration>
          <get-method-handle>
             <method-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</method-declaring-type-name>
-            <method-signature>getPosterLocation()</method-signature>
+            <method-signature>getPoster()</method-signature>
          </get-method-handle>
          <set-method-handle>
             <method-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</method-declaring-type-name>
-            <method-signature>setPosterLocation(java.lang.String)</method-signature>
+            <method-signature>setPoster(java.lang.String)</method-signature>
          </set-method-handle>
       </class-attribute>
       <class-attribute>
@@ -307,7 +307,7 @@
          <modifier>1</modifier>
          <return-type-declaration>
             <type-handle>
-               <type-name>int</type-name>
+               <type-name>java.lang.Integer</type-name>
             </type-handle>
          </return-type-declaration>
          <accessed-attribute-handle>
@@ -333,7 +333,7 @@
          <modifier>1</modifier>
          <return-type-declaration>
             <type-handle>
-               <type-name>int</type-name>
+               <type-name>java.lang.Integer</type-name>
             </type-handle>
          </return-type-declaration>
          <accessed-attribute-handle>
@@ -342,7 +342,7 @@
          </accessed-attribute-handle>
       </method>
       <method>
-         <name>getPosterLocation</name>
+         <name>getPoster</name>
          <modifier>1</modifier>
          <return-type-declaration>
             <type-handle>
@@ -351,7 +351,7 @@
          </return-type-declaration>
          <accessed-attribute-handle>
             <attribute-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</attribute-declaring-type-name>
-            <attribute-name>posterLocation</attribute-name>
+            <attribute-name>poster</attribute-name>
          </accessed-attribute-handle>
       </method>
       <method>
@@ -528,7 +528,7 @@
             <method-parameter>
                <type-declaration>
                   <type-handle>
-                     <type-name>int</type-name>
+                     <type-name>java.lang.Integer</type-name>
                   </type-handle>
                </type-declaration>
             </method-parameter>
@@ -572,7 +572,7 @@
             <method-parameter>
                <type-declaration>
                   <type-handle>
-                     <type-name>int</type-name>
+                     <type-name>java.lang.Integer</type-name>
                   </type-handle>
                </type-declaration>
             </method-parameter>
@@ -583,7 +583,7 @@
          </accessed-attribute-handle>
       </method>
       <method>
-         <name>setPosterLocation</name>
+         <name>setPoster</name>
          <modifier>1</modifier>
          <return-type-declaration>
             <type-handle>
@@ -601,7 +601,7 @@
          </method-parameters>
          <accessed-attribute-handle>
             <attribute-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</attribute-declaring-type-name>
-            <attribute-name>posterLocation</attribute-name>
+            <attribute-name>poster</attribute-name>
          </accessed-attribute-handle>
       </method>
       <method>

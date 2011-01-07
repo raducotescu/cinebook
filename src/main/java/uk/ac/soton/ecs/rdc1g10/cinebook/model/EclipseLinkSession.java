@@ -8,7 +8,7 @@ import org.eclipse.persistence.sessions.factories.SessionManager;
 import org.eclipse.persistence.sessions.factories.XMLSessionConfigLoader;
 
 import uk.ac.soton.ecs.rdc1g10.cinebook.utils.PropertiesLoader;
-import uk.ac.soton.ecs.rdc1g10.cinebook.utils.StringUtils;
+import uk.ac.soton.ecs.rdc1g10.cinebook.utils.CineBookUtils;
 
 
 public class EclipseLinkSession {
@@ -26,7 +26,7 @@ public class EclipseLinkSession {
 			Properties p = PropertiesLoader.getPropertiesFromFile("application.properties");
 			String username = p.getProperty("db.username");
 			String password = p.getProperty("db.password");
-			if(!StringUtils.isEmpty(username) && !StringUtils.isEmpty(password)) {
+			if(!CineBookUtils.isEmptyString(username) && !CineBookUtils.isEmptyString(password)) {
 				session.login(username, password);
 			}
 			else {

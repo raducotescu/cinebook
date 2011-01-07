@@ -145,14 +145,14 @@
          </column-handle>
       </mapping>
       <mapping type="direct-to-field">
-         <name>posterLocation</name>
+         <name>poster</name>
          <attribute-handle>
             <attribute-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</attribute-declaring-type-name>
-            <attribute-name>posterLocation</attribute-name>
+            <attribute-name>poster</attribute-name>
          </attribute-handle>
          <column-handle>
             <column-table-name>Movie</column-table-name>
-            <column-name>poster_location</column-name>
+            <column-name>poster</column-name>
          </column-handle>
       </mapping>
       <mapping type="direct-to-field">

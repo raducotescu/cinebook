@@ -12,7 +12,7 @@ import uk.ac.soton.ecs.rdc1g10.cinebook.model.Database;
 import uk.ac.soton.ecs.rdc1g10.cinebook.model.EclipseLinkSession;
 import uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.User;
 import uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.UserComment;
-import uk.ac.soton.ecs.rdc1g10.cinebook.utils.StringUtils;
+import uk.ac.soton.ecs.rdc1g10.cinebook.utils.CineBookUtils;
 
 public class UserComments {
 	public static void save(String commentText, User postedBy, User postedTo, Date datePosted) {
@@ -33,7 +33,7 @@ public class UserComments {
 		ExpressionBuilder b = new ExpressionBuilder();
 		Expression e = b.get("postedto").get("id").equal(userID);
 		ReadAllQuery rq = new ReadAllQuery(UserComment.class, e);
-		if(StringUtils.isEmpty(orderByDate) || orderByDate.equals("asc")) {
+		if(CineBookUtils.isEmptyString(orderByDate) || orderByDate.equals("asc")) {
 			rq.addAscendingOrdering("datePosted");
 		} else {
 			rq.addDescendingOrdering("datePosted");

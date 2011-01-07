@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <table>
    <short-name>Movie</short-name>
-   <last-refresh-timestamp>2011-01-05T22:08:22.087</last-refresh-timestamp>
+   <last-refresh-timestamp>2011-01-07T15:08:35.312</last-refresh-timestamp>
    <columns>
       <column>
          <name>cast</name>
@@ -34,7 +34,7 @@
          <primary-key>true</primary-key>
       </column>
       <column>
-         <name>poster_location</name>
+         <name>poster</name>
          <type>varchar</type>
          <size>256</size>
       </column>

@@ -7,7 +7,7 @@ import org.apache.struts2.interceptor.ServletRequestAware;
 import uk.ac.soton.ecs.rdc1g10.cinebook.model.EclipseLinkSession;
 import uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.User;
 import uk.ac.soton.ecs.rdc1g10.cinebook.struts.interceptors.SecurityInterceptor;
-import uk.ac.soton.ecs.rdc1g10.cinebook.utils.StringUtils;
+import uk.ac.soton.ecs.rdc1g10.cinebook.utils.CineBookUtils;
 
 
 public class SignInAction extends BaseAction implements ServletRequestAware {
@@ -19,7 +19,7 @@ public class SignInAction extends BaseAction implements ServletRequestAware {
 	private static final String FAILURE = "failed";
 
 	public String execute() throws Exception {
-		if (StringUtils.isEmpty(username) || StringUtils.isEmpty(password)) {
+		if (CineBookUtils.isEmptyString(username) || CineBookUtils.isEmptyString(password)) {
 			return INPUT;
 		}
 

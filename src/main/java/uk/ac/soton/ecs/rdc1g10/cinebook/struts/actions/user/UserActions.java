@@ -13,7 +13,7 @@ import uk.ac.soton.ecs.rdc1g10.cinebook.model.services.Friends;
 import uk.ac.soton.ecs.rdc1g10.cinebook.model.services.UserComments;
 import uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.BaseAction;
 import uk.ac.soton.ecs.rdc1g10.cinebook.struts.interceptors.SecurityInterceptor;
-import uk.ac.soton.ecs.rdc1g10.cinebook.utils.StringUtils;
+import uk.ac.soton.ecs.rdc1g10.cinebook.utils.CineBookUtils;
 
 import com.opensymphony.xwork2.Preparable;
 
@@ -49,7 +49,7 @@ public class UserActions extends BaseAction implements SessionAware, Preparable 
 	}
 
 	public String postCommentToUserPage() throws Exception {
-		if(friendID == null || StringUtils.isEmpty(commentText)) {
+		if(friendID == null || CineBookUtils.isEmptyString(commentText)) {
 			return INPUT;
 		}
 		Friend friend = Friends.getFriendship(user.getId(), friendID);
