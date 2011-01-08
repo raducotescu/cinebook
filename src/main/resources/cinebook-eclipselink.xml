@@ -131,7 +131,11 @@
             <field table="Movie" name="id" xsi:type="column"/>
          </primary-key>
          <events/>
-         <querying/>
+         <querying>
+            <does-exist-query>
+               <existence-check>check-database</existence-check>
+            </does-exist-query>
+         </querying>
          <attribute-mappings>
             <attribute-mapping xsi:type="direct-mapping">
                <attribute-name>cast</attribute-name>
@@ -211,6 +215,12 @@
             <sequence-name>MOVIE_SEQ</sequence-name>
             <sequence-field table="Movie" name="id"/>
          </sequencing>
+         <caching>
+            <cache-type>none</cache-type>
+         </caching>
+         <remote-caching>
+            <cache-type>none</cache-type>
+         </remote-caching>
          <instantiation/>
          <copying xsi:type="instantiation-copy-policy"/>
          <tables>

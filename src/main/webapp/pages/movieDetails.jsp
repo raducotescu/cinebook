@@ -6,7 +6,7 @@
 </jsp:include>
 <div class="movie">
 	<div class="movie-title">${model.title}</div>
-	<div class="moviePoster"><img src="${model.poster}" /></div>
+	<div class="moviePoster"><img src="${pageContext.request.contextPath}/images/posters/${model.poster}" /></div>
 	<div class="movieCast"><strong>With:</strong> ${model.cast}</div>
 	<div class="movieDirector"><strong>Directed by:</strong> ${model.director}</div>
 	<div class="movieGenre"><strong>Genre:</strong> ${model.genre}</div>

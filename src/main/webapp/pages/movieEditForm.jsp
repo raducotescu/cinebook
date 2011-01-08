@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s" %>
-<s:form id="movieEditForm" action="add" namespace="/movies" method="POST" enctype="multipart/form-data">
+<s:form id="movieEditForm" action="save" namespace="/movies" method="POST" enctype="multipart/form-data">
+	<s:textfield id="movieID" name="movieID" cssStyle="display:none" />
 	<s:textfield id="title" name="title" label="Title" />
 	<s:textfield id="year" name="year" label="Year" />
 	<s:textfield id="cast" name="cast" label="Cast"/>
@@ -8,7 +9,11 @@
 	<s:textfield id="genre" name="genre" label="Genre"/>
 	<s:textfield id="rating" name="rating" label="Rating"/>
 	<s:textfield id="duration" name="duration" label="Duration"/>
-	<s:file id="poster" label="Poster" name="poster" />
+	<s:file id="picture" label="Poster" name="picture" />
+	<s:if test="model.poster != null">
+		<img src="${pageContext.request.contextPath}/images/posters/${poster}" />
+	</s:if>
+	<s:textfield id="poster" name="poster" cssStyle="display:none" />
 	<s:textarea id="description" name="description" label="Description" />
 	<s:submit id="submit" value="Submit" />
 </s:form>

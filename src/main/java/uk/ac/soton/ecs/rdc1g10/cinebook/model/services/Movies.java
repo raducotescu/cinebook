@@ -19,8 +19,7 @@ public class Movies {
 		UnitOfWork uow = EclipseLinkSession.getUnitOfWork();
 		Integer movieID = null;
 		if(movie.getId() == null) {
-			movie = (Movie) uow.registerObject(movie);
-			movieID = movie.getId();
+			uow.registerObject(movie);
 		} else {
 			Movie tmpMovie = getMovieById(movie.getId());
 			Movie clone = (Movie) uow.registerObject(tmpMovie);
@@ -35,8 +34,9 @@ public class Movies {
 			clone.setTitle(movie.getTitle());
 			clone.setUserRating(movie.getUserRating());
 			clone.setYear(movie.getYear());
-			movieID = movie.getId();
 		}
+		uow.commit();
+		movieID = movie.getId();
 		return movieID;
 	}
 }

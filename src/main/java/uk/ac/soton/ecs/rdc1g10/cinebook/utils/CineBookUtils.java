@@ -14,12 +14,23 @@ public class CineBookUtils {
 		int dotIndex = filename.lastIndexOf('.');
 		return filename.substring(0, dotIndex);
 	}
+	
+	public static String getExtension(String filename) {
+		int dotIndex = filename.lastIndexOf('.');
+		return filename.substring(dotIndex + 1, filename.length());
+	}
 
-	public static String getMD5Hash(String input)
+	public static String getMD5Hash(Object input)
 			throws UnsupportedEncodingException, NoSuchAlgorithmException {
 		MessageDigest m = MessageDigest.getInstance("MD5");
 		m.reset();
-		m.update(input.getBytes("UTF-8"));
+		if(input instanceof String) {
+			m.update(((String)input).getBytes("UTF-8"));
+		} else if (input instanceof byte[]) {
+			m.update((byte [])input);
+		} else {
+			throw new UnsupportedEncodingException("Unkown object type for hashing.");
+		}
 		byte[] digest = m.digest();
 		BigInteger bigInt = new BigInteger(1, digest);
 		String hash = bigInt.toString(16);

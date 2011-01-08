@@ -83,9 +83,34 @@
 			method="movieDetails">
 			<result name="success">/pages/movieDetails.jsp</result>
 		</action>
-		<action name="add" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.movies.MoviesActions" method="editMovie">
+		<action name="add" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.movies.AdminMoviesActions" method="addMovie">
+			<result name="input">/pages/movieEditForm.jsp</result>
+			<interceptor-ref name="securedBasicStack">
+    			<param name="validation.validateAnnotatedMethodOnly">true</param>
+    			<param name="exception.logEnabled">true</param>
+				<param name="exception.logLevel">ERROR</param>
+				<param name="exception.logCategory">cinebook</param>    			
+			</interceptor-ref>
+		</action>
+		<action name="edit" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.movies.AdminMoviesActions" method="editMovie">
 			<result name="success" type="redirectAction">movieDetails?movieID=${movieID}</result>
 			<result name="input">/pages/movieEditForm.jsp</result>
+			<interceptor-ref name="securedBasicStack">
+    			<param name="validation.validateAnnotatedMethodOnly">true</param>
+    			<param name="exception.logEnabled">true</param>
+				<param name="exception.logLevel">ERROR</param>
+				<param name="exception.logCategory">cinebook</param>    			
+			</interceptor-ref>
+		</action>
+		<action name="save" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.movies.AdminMoviesActions" method="saveMovie">
+			<result name="success" type="redirectAction">movieDetails?movieID=${movieID}</result>
+			<result name="input">/pages/movieEditForm.jsp</result>
+			<interceptor-ref name="securedBasicStack">
+    			<param name="validation.validateAnnotatedMethodOnly">true</param>
+    			<param name="exception.logEnabled">true</param>
+				<param name="exception.logLevel">ERROR</param>
+				<param name="exception.logCategory">cinebook</param>    			
+			</interceptor-ref>
 		</action>
 	</package>
 </struts>
