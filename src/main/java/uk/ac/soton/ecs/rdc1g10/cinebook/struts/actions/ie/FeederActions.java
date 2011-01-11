@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.util.ServletContextAware;
 
-import uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Schedule;
+import uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie;
 import uk.ac.soton.ecs.rdc1g10.cinebook.model.services.ScheduleEntries;
 import uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.BaseAction;
 
@@ -67,16 +67,16 @@ public class FeederActions extends BaseAction implements ServletRequestAware, Se
 			feed.setLink("http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + request.getServletPath());
 			feed.setDescription("Find out CineBook's current schedule from your favourite RSS reader");
 			feed.setPublishedDate(new Date());
-			List<Schedule> movies = (List<Schedule>) ScheduleEntries.getCurrentSchedule();
+			List<Movie> movies = (List<Movie>) ScheduleEntries.getCurrentSchedule();
 			List<SyndEntry> exportedFeedEntries = new ArrayList<SyndEntry>();
-			for(Schedule s : movies) {
+			for(Movie m : movies) {
 				SyndEntry entry = new SyndEntryImpl();
 				SyndContent description = new SyndContentImpl();
-				entry.setTitle(s.getMovie().getTitle());
-				entry.setLink("http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/movies/movieDetails?movieID=" + s.getMovie().getId());
+				entry.setTitle(m.getTitle());
+				entry.setLink("http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/movies/movieDetails?movieID=" + m.getId());
 				entry.setPublishedDate(new Date());
 				description.setType("text/html");
-				description.setValue(s.getMovie().getDescription());
+				description.setValue(m.getDescription());
 				entry.setDescription(description);
 				exportedFeedEntries.add(entry);
 			}

@@ -9,6 +9,7 @@
 <s:if test="comments.size > 0">
 	<h3>Comments posted for ${friend.firstName}</h3>
 	<ul>
+		<hr />
 		<s:iterator value="comments">
 			<div id="comment-${id}">
 			<p>${postedby.firstName} ${postedby.lastName} said on <s:date
@@ -31,6 +32,7 @@
 				<input type="hidden" name="friendID" value="${friend.id}" />
 				<s:submit />
 			</s:form></div>
+			<hr />
 		</s:iterator>
 	</ul>
 </s:if>

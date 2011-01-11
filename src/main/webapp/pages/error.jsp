@@ -4,7 +4,10 @@
 	<jsp:param value="Error" name="title"/>
 </jsp:include>
 		<h2>An error has been encountered.</h2>
-		<div id="actionError">
-			<s:actionerror />
+		<div style="padding: 0pt 0.7em;" class="ui-state-error ui-corner-all">
+			<p>
+			<span style="float: left; margin: 0 7px 50px 0;" class="ui-icon ui-icon-alert"></span> 
+			<s:actionerror/>
+			</p>
 		</div>
 <jsp:include page="footer.jsp" />

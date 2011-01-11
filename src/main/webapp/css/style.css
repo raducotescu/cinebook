@@ -1,0 +1,113 @@
+body {
+	background-color: #F2F2F2;
+	font-family:"Ubuntu Beta","Bitstream Vera Sans","DejaVu Sans","Tahoma",sans-serif;
+	font-size:12px;
+	margin:0;
+	padding:0;
+	color: #666666;
+}
+
+img {
+	border: 0 none;
+}
+
+a, a:visited {
+	text-decoration: none;
+		color: #F37421;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+.errorMessage li {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+#wrapper {
+	width: 900px;
+	margin: 0 auto;
+}
+
+#header {
+	margin-top: 30px;
+	height: 100px;
+}
+
+#logo, #logo a {
+	height: 150px;
+	float: left;
+}
+
+#userControls {
+	float: right;
+}
+
+#userControls ul {
+	margin: 0;
+	padding: 0;
+}
+
+#userControls li {
+	list-style-type: none;
+	float: left;
+}
+
+#userControls a {
+	padding-left: 15px;
+}
+
+#content {
+	min-height: 365px;
+	padding-top: 15px;
+	clear: both;
+}
+
+
+#dummy {
+	height: 1px;
+}
+
+
+#footer {
+	padding-top: 20px;
+}
+
+.movie {
+	width: 300px;
+	float: left;
+	margin-left: 5px;
+}
+
+.movieTitle {
+	font-size: 20px;
+}
+
+.movie .movieTitle {
+	font-size: 16px;
+}
+
+.moviePoster, .moviePoster img {
+	height: 200px;
+	float: left;
+	margin-right: 10px;
+}
+.movieRecommendations {
+	clear: both;
+	padding-top: 10px;
+}
+.movieRecommendations li {
+	list-style-type: none;
+	font-size: 20px;
+}
+.friendsList ul {
+	padding-left: 0px;
+}
+
+.friendsList li {
+	float: left;
+	list-style-type: none;
+	padding-left: 10px;
+}

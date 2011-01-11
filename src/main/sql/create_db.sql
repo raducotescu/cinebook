@@ -185,12 +185,12 @@ CREATE  TABLE IF NOT EXISTS `cinebook`.`UserCommentRating` (
   CONSTRAINT `fk_UserCommentsRating_User`
     FOREIGN KEY (`user_id` )
     REFERENCES `cinebook`.`User` (`id` )
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_UserCommentsRating_UserComment`
     FOREIGN KEY (`user_comment` )
     REFERENCES `cinebook`.`UserComment` (`id` )
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
@@ -209,12 +209,36 @@ CREATE  TABLE IF NOT EXISTS `cinebook`.`MovieUserRating` (
   CONSTRAINT `fk_MovieUserRating_User`
     FOREIGN KEY (`user_id` )
     REFERENCES `cinebook`.`User` (`id` )
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_MovieUserRating_Movie`
     FOREIGN KEY (`movie_id` )
     REFERENCES `cinebook`.`Movie` (`id` )
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `cinebook`.`CFMovies`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `cinebook`.`CFMovies` (
+  `movie1` INT NOT NULL ,
+  `movie2` INT NOT NULL ,
+  `count` INT NOT NULL DEFAULT 0 ,
+  `sum` INT NOT NULL DEFAULT 0 ,
+  PRIMARY KEY (`movie1`, `movie2`) ,
+  INDEX `fk_CFMovies_Movie1` (`movie1` ASC) ,
+  INDEX `fk_CFMovies_Movie2` (`movie2` ASC) ,
+  CONSTRAINT `fk_CFMovies_Movie1`
+    FOREIGN KEY (`movie1` )
+    REFERENCES `cinebook`.`Movie` (`id` )
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_CFMovies_Movie2`
+    FOREIGN KEY (`movie2` )
+    REFERENCES `cinebook`.`Movie` (`id` )
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
@@ -224,7 +248,18 @@ DELIMITER $$
 USE `cinebook`$$
 
 
-CREATE TRIGGER updateUserCommentOverallRating AFTER INSERT on UserCommentRating
+CREATE TRIGGER updateUserCommentOverallRating AFTER UPDATE on UserCommentRating
+FOR EACH ROW
+BEGIN
+	UPDATE UserComment
+	SET overall_rating = (SELECT AVG(rating) from UserCommentRating where  user_comment = (SELECT user_comment from UserCommentRating WHERE id = NEW.id))
+	WHERE id = (SELECT user_comment from UserCommentRating WHERE id = NEW.id);
+END$$
+
+USE `cinebook`$$
+
+
+CREATE TRIGGER insertUserCommentOverallRating AFTER INSERT on UserCommentRating
 FOR EACH ROW
 BEGIN
 	UPDATE UserComment
@@ -239,7 +274,18 @@ DELIMITER $$
 USE `cinebook`$$
 
 
-CREATE TRIGGER updateMovieOverallRating AFTER INSERT on MovieUserRating
+CREATE TRIGGER updateMovieOverallRating AFTER UPDATE on MovieUserRating
+FOR EACH ROW
+BEGIN
+	UPDATE Movie
+	SET overall_rating = (SELECT AVG(rating) from MovieUserRating where  movie_id = (SELECT movie_id from MovieUserRating WHERE id = NEW.id))
+	WHERE id = (SELECT movie_id from MovieUserRating WHERE id = NEW.id);
+END$$
+
+USE `cinebook`$$
+
+
+CREATE TRIGGER insertMovieOverallRating AFTER INSERT on MovieUserRating
 FOR EACH ROW
 BEGIN
 	UPDATE Movie

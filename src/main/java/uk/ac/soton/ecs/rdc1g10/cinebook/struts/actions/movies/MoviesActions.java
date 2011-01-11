@@ -6,7 +6,6 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie;
-import uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Schedule;
 import uk.ac.soton.ecs.rdc1g10.cinebook.model.services.CFMovies;
 import uk.ac.soton.ecs.rdc1g10.cinebook.model.services.Movies;
 import uk.ac.soton.ecs.rdc1g10.cinebook.model.services.ScheduleEntries;
@@ -19,12 +18,12 @@ public class MoviesActions extends BaseAction implements ModelDriven<Movie>,
 		SessionAware, Preparable {
 
 	private static final long serialVersionUID = 3088856416865240679L;
-	private Collection<Schedule> scheduleEntries;
 	private Movie movie;
 	private Integer movieID;
 	private Map<String, Object> session;
 	private boolean movieInDatabase;
 	private Collection<Movie> recommendations;
+	private Collection<Movie> scheduledMovies;
 
 	@Override
 	public Movie getModel() {
@@ -44,12 +43,12 @@ public class MoviesActions extends BaseAction implements ModelDriven<Movie>,
 	}
 
 	public String currentSchedule() throws Exception {
-		scheduleEntries = ScheduleEntries.getCurrentSchedule();
+		scheduledMovies = ScheduleEntries.getCurrentSchedule();
 		return SUCCESS;
 	}
 
-	public Collection<Schedule> getScheduleEntries() {
-		return scheduleEntries;
+	public Collection<Movie> getScheduledMovies() {
+		return scheduledMovies;
 	}
 
 	public Integer getMovieID() {
