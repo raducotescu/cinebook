@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE struts PUBLIC
-          "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"       
-          "http://struts.apache.org/dtds/struts-2.0.dtd">
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
 	<constant name="struts.multipart.maxSize" value="4194304" />
 	<package name="basic" namespace="/" extends="struts-default">
-
 		<interceptors>
 			<interceptor name="security"
 				class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.interceptors.SecurityInterceptor">
-				<param name="requiresAuthentication">
-					/user,/admin
-        		</param>
+				<param name="requiresAuthentication">/user,/admin</param>
 			</interceptor>
 			<interceptor-stack name="securedBasicStack">
 				<interceptor-ref name="paramsPrepareParamsStack">
@@ -26,52 +21,35 @@
 				</interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
-
 		<default-interceptor-ref name="securedBasicStack" />
-
 		<global-results>
 			<result name="error">/pages/error.jsp</result>
 			<result name="login">/pages/login.jsp</result>
 		</global-results>
-
-		<action name="index"
-			class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.BaseAction">
+		<action name="index" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.BaseAction">
 			<result name="success">/pages/home.jsp</result>
 		</action>
-
-		<action name="signIn"
-			class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.SignInAction">
+		<action name="signIn" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.SignInAction">
 			<result name="success" type="redirectAction">index</result>
 			<result name="input">/pages/login.jsp</result>
 			<result name="failed">/pages/login.jsp</result>
 		</action>
-
-		<action name="signOut"
-			class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.SignOutAction">
+		<action name="signOut" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.SignOutAction">
 			<result name="success" type="redirectAction">index</result>
 		</action>
 	</package>
-
 	<package name="user" extends="basic" namespace="/user">
-		<action name="postComment"
-			class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.user.UserActions"
-			method="postCommentToUserPage">
+		<action name="postComment" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.user.UserActions"	method="postCommentToUserPage">
 			<result name="success" type="redirectAction">friend?friendID=${friendID}</result>
 			<result name="input" type="redirectAction">friend?friendID=${friendID}</result>
 		</action>
-		<action name="friends"
-			class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.user.UserActions"
-			method="viewFriends">
+		<action name="friends" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.user.UserActions"	method="viewFriends">
 			<result name="success">/pages/friends.jsp</result>
 		</action>
-		<action name="friend"
-			class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.user.UserActions"
-			method="friendPage">
+		<action name="friend" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.user.UserActions"	method="friendPage">
 			<result name="success">/pages/friend.jsp</result>
 		</action>
-		<action name="myPage"
-			class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.user.UserActions"
-			method="friendPage">
+		<action name="myPage" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.user.UserActions" method="friendPage">
 			<result name="success">/pages/friend.jsp</result>
 		</action>
 		<action name="rateMovie" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.user.UserActions" method="rateMovie">
@@ -102,43 +80,29 @@
 		</action>
 	</package>
 	<package name="feeds" extends="basic" namespace="/feeds">
-		<action name="importedFeed"
-			class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.ie.FeederActions"
-			method="importedFeed">
+		<action name="importedFeed"	class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.ie.FeederActions" method="importedFeed">
 			<result name="success">/pages/importedfeed.jsp</result>
 		</action>
-		<action name="scheduleFeed"
-			class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.ie.FeederActions"
-			method="producedFeed">
+		<action name="scheduleFeed"	class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.ie.FeederActions" method="producedFeed">
 			<result name="success">/pages/schedule.xml</result>
 		</action>
 	</package>
 	<package name="movies" extends="basic" namespace="/movies">
-		<action name="currentSchedule"
-			class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.movies.MoviesActions"
-			method="currentSchedule">
+		<action name="currentSchedule" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.movies.MoviesActions"	method="currentSchedule">
 			<result name="success">/pages/currentSchedule.jsp</result>
 		</action>
-		<action name="movieDetails"
-			class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.movies.MoviesActions"
-			method="movieDetails">
+		<action name="movieDetails"	class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.movies.MoviesActions" method="movieDetails">
 			<result name="success">/pages/movieDetails.jsp</result>
 		</action>
-		<action name="add"
-			class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.movies.AdminMoviesActions"
-			method="addMovie">
+		<action name="add" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.movies.AdminMoviesActions" method="addMovie">
 			<result name="success">/pages/movieEditForm.jsp</result>
 		</action>
-		<action name="edit"
-			class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.movies.AdminMoviesActions"
-			method="editMovie">
+		<action name="edit"	class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.movies.AdminMoviesActions" method="editMovie">
 			<result name="success" type="redirectAction">movieDetails?movieID=${movieID}
 			</result>
 			<result name="input">/pages/movieEditForm.jsp</result>
 		</action>
-		<action name="save"
-			class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.movies.AdminMoviesActions"
-			method="saveMovie">
+		<action name="save" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.movies.AdminMoviesActions" method="saveMovie">
 			<result name="success" type="redirectAction">movieDetails?movieID=${movieID}</result>
 			<result name="input">/pages/movieEditForm.jsp</result>
 		</action>

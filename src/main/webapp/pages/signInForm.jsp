@@ -16,28 +16,9 @@
 	    <s:submit value="Sign In"/>
 	</s:form>
 	<script type="text/javascript">
-	$('document').ready(function() {
-		$('input:submit', '#signInForm').button().click(function(e) {
-			if(checkInputs()) {
-				$('#signInForm form').submit();
-			}
-		});
-		$('#usernameNeeded').dialog({
-			autoOpen: false,
-			draggable: false,
-			modal: true,
-			resizable: false,
-			height: 120,
-			close: function(event, ui) { $('#username').focus(); }
-		});
-		$('#passwordNeeded').dialog({
-			autoOpen: false,
-			draggable: false,
-			modal: true,
-			resizable: false,
-			height: 120,
-			close: function(event, ui) { $('#password').focus(); }
-		});
+	$('document').ready(function() {$('input:submit', '#signInForm').button().click(function(e) {if(checkInputs()) {$('#signInForm form').submit();}});
+		$('#usernameNeeded').dialog({autoOpen: false, draggable: false, modal: true, resizable: false, height: 120,	close: function(event, ui) { $('#username').focus(); }});
+		$('#passwordNeeded').dialog({autoOpen: false, draggable: false,	modal: true, resizable: false, height: 120,	close: function(event, ui) { $('#password').focus(); }});
 		function checkInputs() {
 			if($('#username').val().isEmpty()) { 
 				$('#usernameNeeded').dialog('open');
@@ -49,14 +30,7 @@
 			}
 			return true;
 		}
-		$('#username, #password').keyup(function(e) {
-			var code = (e.keyCode ? e.keyCode : e.which);
-			if(code == 13) {
-				if(checkInputs()) {
-					$('#signInForm form').submit();
-				}
-			}
-		});
+		$('#username, #password').keyup(function(e) {var code = (e.keyCode ? e.keyCode : e.which); if(code == 13) {	if(checkInputs()) {	$('#signInForm form').submit(); }}});
 	});
 	</script>
 	<div id="usernameNeeded" title="Error" style="padding: 0pt 0.7em;" class="ui-state-error ui-corner-all"> 

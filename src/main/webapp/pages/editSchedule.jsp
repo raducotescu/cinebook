@@ -9,10 +9,5 @@
 	<s:textfield id="startTime" name="startTime" label="Scheduled time" />
 	<s:submit />
 </s:form>
-<script type="text/javascript">
-  $("#startTime").AnyTime_picker(
-      { format: "%Y-%m-%d %H:%i",
-        hideInput: true,
-        placement: "inline" } );
-</script>
+<script type="text/javascript">$("#startTime").AnyTime_picker({ format: "%Y-%m-%d %H:%i", hideInput: true, placement: "inline" } );</script>
 <jsp:include page="footer.jsp" />

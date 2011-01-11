@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <jsp:include page="header.jsp">
 	<jsp:param value="Movie Details" name="title" />
@@ -18,16 +17,11 @@
 	<s:if test="#session.user != null">
 		<strong>Your rating:</strong>
 		<s:form namespace="/user" action="rateMovie" method="POST">
-			<input type="radio" id="movieRating-1" name="movieRating" value="1" />
-			<label for="movieRating-1">1</label>
-			<input type="radio" id="movieRating-2" name="movieRating" value="2" />
-			<label for="movieRating-2">2</label>
-			<input type="radio" id="movieRating-3" name="movieRating" value="3" />
-			<label for="movieRating-3">3</label>
-			<input type="radio" id="movieRating-4" name="movieRating" value="4" />
-			<label for="movieRating-4">4</label>
-			<input type="radio" id="movieRating-5" name="movieRating" value="5" />
-			<label for="movieRating-5">5</label>
+			<input type="radio" id="movieRating-1" name="movieRating" value="1">1</input>
+			<input type="radio" id="movieRating-2" name="movieRating" value="2">2</input>
+			<input type="radio" id="movieRating-3" name="movieRating" value="3">3</input>
+			<input type="radio" id="movieRating-4" name="movieRating" value="4">4</input>
+			<input type="radio" id="movieRating-5" name="movieRating" value="5">5</input>
 			<input type="hidden" id="movieID" name="movieID" value="${model.id}" />
 			<s:submit />
 		</s:form>
