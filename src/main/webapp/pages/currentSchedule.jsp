@@ -1,19 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s" %>
-<s:if test="scheduleEntries.size > 0">
+<s:if test="scheduledMovies.size > 0">
 	<div id="moviesList">
-	<s:iterator value="scheduleEntries">
+	<s:iterator value="scheduledMovies">
 		<div class="movie">
-			<div class="movie-title">
+		<s:a href="%{movieLink}">
+			<div class="movieTitle">
 				<s:url action="movieDetails" namespace="/movies" var="movieLink">
-					<s:param name="movieID" value="movie.id"/>
+					<s:param name="movieID" value="id"/>
 				</s:url>
-				<s:a href="%{movieLink}">${movie.title}</s:a>
+				${title}
 			</div>
 			<div class="moviePoster">
-				<img src="${pageContext.request.contextPath}/images/posters/${movie.poster}" />
+				<img src="${pageContext.request.contextPath}/images/posters/${poster}" />
 			</div>
 			<div class="movieButtons"></div>
+			</s:a>
 		</div>
 	</s:iterator>
 	</div>

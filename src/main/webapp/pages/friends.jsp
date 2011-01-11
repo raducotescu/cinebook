@@ -4,6 +4,8 @@
 	<jsp:param value="My Friends" name="title"/>
 </jsp:include>
 <s:if test="friends!=null">
+	<h2>These are your friends:</h2>
+	<div class="friendsList">
 	<ul>
 		<s:iterator value="friends">
 			<li>
@@ -14,5 +16,6 @@
 			</li>
 		</s:iterator>
 	</ul>
+	</div>
 </s:if>
 <jsp:include page="footer.jsp" />

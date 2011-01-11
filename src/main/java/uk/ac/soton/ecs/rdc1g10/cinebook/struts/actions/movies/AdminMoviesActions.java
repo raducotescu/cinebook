@@ -3,14 +3,20 @@ package uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.movies;
 import java.io.File;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
+import java.util.Collection;
 
 import javax.servlet.ServletContext;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.util.ServletContextAware;
 
+import uk.ac.soton.ecs.rdc1g10.cinebook.model.Database;
+import uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie;
+import uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Schedule;
 import uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.User;
 import uk.ac.soton.ecs.rdc1g10.cinebook.model.services.Movies;
+import uk.ac.soton.ecs.rdc1g10.cinebook.model.services.ScheduleEntries;
 import uk.ac.soton.ecs.rdc1g10.cinebook.struts.annotations.RequiresAuthentication;
 import uk.ac.soton.ecs.rdc1g10.cinebook.struts.interceptors.SecurityInterceptor;
 import uk.ac.soton.ecs.rdc1g10.cinebook.utils.CineBookFileUtils;
@@ -25,11 +31,61 @@ public class AdminMoviesActions extends MoviesActions implements
 	private String pictureContentType;
 	private String pictureFileName;
 	private ServletContext context;
+	private String startTime;
+	private Integer theatre;
+	private Collection<Movie> movies;
+	private Integer movieID;
+	private Schedule s;
+	private Integer scheduleEntryId;
 	
-	public String addMovie() throws Exception {
-		return INPUT;
+	@SuppressWarnings("unchecked")
+	public String editSchedule() throws Exception {
+		if (((User) getSession().get(SecurityInterceptor.USER_OBJECT))
+				.getRole() < 1) {
+			addActionError("Your authentication level denies you this action!");
+			return ERROR;
+		}
+		if(scheduleEntryId != null) {
+			s = ScheduleEntries.getScheduleEntryById(scheduleEntryId);
+			movieID = s.getMovie().getId();
+			theatre = s.getTheatre();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+			startTime = sdf.format(s.getStartTime());
+			scheduleEntryId = s.getId();
+		}
+		movies = (Collection<Movie>) Database.readAll(Movie.class);
+		return SUCCESS;
+	}
+	
+	public String saveMovieScheduleEntry() throws Exception {
+		Movie movie = Movies.getMovieById(movieID);
+		if(scheduleEntryId != null) {
+			s = ScheduleEntries.getScheduleEntryById(scheduleEntryId);
+			s.setMovie(movie);
+			s.setStartTime(new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(startTime));
+			s.setTheatre(theatre);
+			ScheduleEntries.save(s);
+		} else {
+			s = new Schedule();
+			s.setMovie(movie);
+			s.setStartTime(new SimpleDateFormat("yyyy-MM-dd H:m").parse(startTime));
+			s.setTheatre(theatre);
+			ScheduleEntries.save(s);
+		}
+		return SUCCESS;
 	}
 
+	public String addMovie() throws Exception {
+		User usr;
+		if((usr = (User) getSession().get(SecurityInterceptor.USER_OBJECT)) != null) {
+			if(usr.getRole() > 0) {
+				return SUCCESS;
+			}
+		}
+		addActionError("You do not have sufficient privileges for this action");
+		return ERROR;
+	}
+	
 	public String editMovie() throws Exception {
 		if (((User) getSession().get(SecurityInterceptor.USER_OBJECT))
 				.getRole() < 1) {
@@ -106,6 +162,42 @@ public class AdminMoviesActions extends MoviesActions implements
 
 	public String getPictureFileName() {
 		return pictureFileName;
+	}
+
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
+	}
+
+	public void setTheatre(Integer theatre) {
+		this.theatre = theatre;
+	}
+
+	public Collection<Movie> getMovies() {
+		return movies;
+	}
+	
+	public Integer getMovieID() {
+		return movieID;
+	}
+
+	public void setMovieID(Integer movieID) {
+		this.movieID = movieID;
+	}
+
+	public void setScheduleEntryId(Integer scheduleEntryId) {
+		this.scheduleEntryId = scheduleEntryId;
+	}
+
+	public String getStartTime() {
+		return startTime;
+	}
+
+	public Integer getTheatre() {
+		return theatre;
+	}
+
+	public Integer getScheduleEntryId() {
+		return scheduleEntryId;
 	}
 
 }

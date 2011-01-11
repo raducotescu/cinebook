@@ -1,5 +1,6 @@
 package uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.user;
 
+import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Map;
@@ -8,17 +9,21 @@ import java.util.Vector;
 import org.apache.struts2.interceptor.SessionAware;
 import org.eclipse.persistence.sessions.DatabaseRecord;
 
+import uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Booking;
 import uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.CFMovie;
 import uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Friend;
 import uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie;
 import uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.MovieUserRating;
+import uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Schedule;
 import uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.User;
 import uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.UserComment;
 import uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.UserCommentRating;
+import uk.ac.soton.ecs.rdc1g10.cinebook.model.services.Bookings;
 import uk.ac.soton.ecs.rdc1g10.cinebook.model.services.CFMovies;
 import uk.ac.soton.ecs.rdc1g10.cinebook.model.services.Friends;
 import uk.ac.soton.ecs.rdc1g10.cinebook.model.services.MovieUserRatings;
 import uk.ac.soton.ecs.rdc1g10.cinebook.model.services.Movies;
+import uk.ac.soton.ecs.rdc1g10.cinebook.model.services.ScheduleEntries;
 import uk.ac.soton.ecs.rdc1g10.cinebook.model.services.UserCommentRatings;
 import uk.ac.soton.ecs.rdc1g10.cinebook.model.services.UserComments;
 import uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.BaseAction;
@@ -42,24 +47,63 @@ public class UserActions extends BaseAction implements SessionAware, Preparable 
 	private Integer commentRating;
 	private Integer movieID;
 	private Integer movieRating;
+	private Integer userID;
+	private Collection<Schedule> entriesForMovie;
+	public SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+	private Integer scheduleID;
+	private Integer seats;
+	private Collection<Booking> bookings;
 
+	public String book() throws Exception {
+		if(movieID != null) {
+			entriesForMovie = ScheduleEntries.getScheduleEntriesForMovie(movieID);
+			return SUCCESS;
+		}
+		addActionError("You cannot book tickets for the selected movie!");
+		return ERROR;
+	}
+	
+	public String completeBooking() throws Exception {
+		if(scheduleID != null) {
+		Booking b = new Booking();
+		b.setScheduleEntry(ScheduleEntries.getScheduleEntryById(scheduleID));
+		b.setUser(user);
+		b.setSeats(seats);
+		b.setStatus(1);
+		Bookings.save(b);
+		return SUCCESS;
+		}
+		return ERROR;
+	}
+	
+	public String myBookings() throws Exception {
+		bookings = Bookings.getBookingsForUser(user.getId());
+		return SUCCESS;
+	}
+	
 	public String viewFriends() throws Exception {
 		friends = Friends.getFriends(user.getId());
 		return SUCCESS;
 	}
 
 	public String friendPage() throws Exception {
-		if (friendID == null) {
-			return ERROR;
-		}
+		if (friendID != null) {
 		Friend f = Friends.getFriendship(user.getId(), friendID);
-		if (f != null) {
-			friend = f.getUser1().getId().equals(user.getId()) ? f.getUser2() : f.getUser1();
-			comments = UserComments.getCommentsPostedToUser(friendID,
-					commentsOrderByDate);
-			return SUCCESS;
-		}
-		addActionError("You are not friends with the indicated user.");
+			if (f != null) {
+				friend = f.getUser1().getId().equals(user.getId()) ? f.getUser2() : f.getUser1();
+				comments = UserComments.getCommentsPostedToUser(friendID,
+						commentsOrderByDate);
+				return SUCCESS;
+			} else {
+				addActionError("You are not friends with the indicated user!");
+				return ERROR;
+			}
+		} else if(userID != null && userID == user.getId()) {
+			friend = user;
+			comments = UserComments.getCommentsPostedToUser(userID, commentsOrderByDate);
+					return SUCCESS;
+		} 
+		addActionError("You aren't allowed to view the requested page!");
 		return ERROR;
 	}
 
@@ -227,5 +271,29 @@ public class UserActions extends BaseAction implements SessionAware, Preparable 
 
 	public void setFriendID(Integer friendID) {
 		this.friendID = friendID;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUserID(Integer userID) {
+		this.userID = userID;
+	}
+
+	public Collection<Schedule> getEntriesForMovie() {
+		return entriesForMovie;
+	}
+
+	public void setScheduleID(Integer scheduleID) {
+		this.scheduleID = scheduleID;
+	}
+
+	public void setSeats(Integer seats) {
+		this.seats = seats;
+	}
+
+	public Collection<Booking> getBookings() {
+		return bookings;
 	}
 }
