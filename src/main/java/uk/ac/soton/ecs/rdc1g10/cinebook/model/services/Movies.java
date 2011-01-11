@@ -28,11 +28,9 @@ public class Movies {
 			clone.setDirector(movie.getDirector());
 			clone.setDuration(movie.getDuration());
 			clone.setGenre(movie.getGenre());
-			clone.setId(movie.getId());
 			clone.setPoster(movie.getPoster());
 			clone.setRating(movie.getRating());
 			clone.setTitle(movie.getTitle());
-			clone.setUserRating(movie.getUserRating());
 			clone.setYear(movie.getYear());
 		}
 		uow.commit();

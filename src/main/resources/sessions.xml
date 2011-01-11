@@ -4,7 +4,7 @@
       <name>devmachine</name>
       <event-listener-classes/>
       <logging xsi:type="eclipselink-log">
-         <log-level>finest</log-level>
+         <log-level>fine</log-level>
          <logging-options>
             <log-exception-stacktrace>false</log-exception-stacktrace>
             <print-thread>false</print-thread>

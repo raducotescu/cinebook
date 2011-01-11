@@ -11,7 +11,7 @@
 				<s:a href="%{movieLink}">${movie.title}</s:a>
 			</div>
 			<div class="moviePoster">
-				<img src="${movie.posterLocation}" />
+				<img src="${pageContext.request.contextPath}/images/posters/${movie.poster}" />
 			</div>
 			<div class="movieButtons"></div>
 		</div>

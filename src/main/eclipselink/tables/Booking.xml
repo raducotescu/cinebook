@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <table>
    <short-name>Booking</short-name>
-   <last-refresh-timestamp>2011-01-07T19:04:33.17</last-refresh-timestamp>
+   <last-refresh-timestamp>2011-01-10T13:33:03.206</last-refresh-timestamp>
    <columns>
       <column>
          <name>id</name>

@@ -22,7 +22,6 @@ public class UserComments {
 		uc.setPostedby(postedBy);
 		uc.setPostedto(postedTo);
 		uc.setDatePosted(datePosted);
-		uc.setRating(0);
 		uow.registerObject(uc);
 		uow.commit();
 	}
@@ -39,5 +38,11 @@ public class UserComments {
 			rq.addDescendingOrdering("datePosted");
 		}
 		return (Collection<UserComment>) Database.read(rq);
+	}
+	
+	public static UserComment getCommentByID(Integer commentID) throws Exception {
+		ExpressionBuilder b = new ExpressionBuilder();
+		Expression e = b.get("id").equal(commentID);
+		return (UserComment) Database.readObject(UserComment.class, e);
 	}
 }

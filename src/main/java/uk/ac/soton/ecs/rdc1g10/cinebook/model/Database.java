@@ -1,9 +1,12 @@
 package uk.ac.soton.ecs.rdc1g10.cinebook.model;
 
 import java.util.Collection;
+import java.util.Vector;
 
 import org.eclipse.persistence.expressions.Expression;
+import org.eclipse.persistence.queries.DataReadQuery;
 import org.eclipse.persistence.queries.DatabaseQuery;
+import org.eclipse.persistence.sessions.DatabaseRecord;
 import org.eclipse.persistence.sessions.Session;
 
 /**
@@ -36,5 +39,9 @@ public class Database {
 	
 	public static final Collection<?> read(DatabaseQuery q) throws Exception {
 		return (Collection<?>) session.executeQuery(q);
+	}
+	
+	public static final Vector<DatabaseRecord> read(DataReadQuery dq, Vector<?> values) {
+		return (Vector<DatabaseRecord>) session.executeQuery(dq, values);
 	}
 }

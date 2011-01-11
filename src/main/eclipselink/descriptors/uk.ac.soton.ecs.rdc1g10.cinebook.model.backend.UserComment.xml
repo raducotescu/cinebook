@@ -7,7 +7,10 @@
    <transactional-policy type="relational">
       <descriptor-alias>Usercomments</descriptor-alias>
       <refresh-cache-policy/>
-      <caching-policy/>
+      <caching-policy>
+         <cache-type>None</cache-type>
+         <existence-checking>Check database</existence-checking>
+      </caching-policy>
       <query-manager type="relational">
          <insert-query type="insert">
             <relational-options>
@@ -84,6 +87,17 @@
             <column-name>id</column-name>
          </column-handle>
       </mapping>
+      <mapping type="direct-to-field">
+         <name>overallRating</name>
+         <attribute-handle>
+            <attribute-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.UserComment</attribute-declaring-type-name>
+            <attribute-name>overallRating</attribute-name>
+         </attribute-handle>
+         <column-handle>
+            <column-table-name>UserComment</column-table-name>
+            <column-name>overall_rating</column-name>
+         </column-handle>
+      </mapping>
       <mapping type="one-to-one">
          <name>postedby</name>
          <attribute-handle>
@@ -113,17 +127,6 @@
             <reference-table-name>UserComment</reference-table-name>
             <reference-name>fk_UserComments_ToUser</reference-name>
          </reference-handle>
-      </mapping>
-      <mapping type="direct-to-field">
-         <name>rating</name>
-         <attribute-handle>
-            <attribute-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.UserComment</attribute-declaring-type-name>
-            <attribute-name>rating</attribute-name>
-         </attribute-handle>
-         <column-handle>
-            <column-table-name>UserComment</column-table-name>
-            <column-name>rating</column-name>
-         </column-handle>
       </mapping>
    </mappings>
    <primary-table-handle>

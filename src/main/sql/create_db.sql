@@ -33,8 +33,8 @@ CREATE  TABLE IF NOT EXISTS `cinebook`.`Movie` (
   `duration` INT NOT NULL ,
   `poster` VARCHAR(256) NOT NULL ,
   `rating` VARCHAR(45) NOT NULL ,
-  `user_rating` FLOAT NULL ,
   `year` INT NOT NULL ,
+  `overall_rating` FLOAT NULL DEFAULT 0 ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) )
 ENGINE = InnoDB;
@@ -44,13 +44,12 @@ ENGINE = InnoDB;
 -- Table `cinebook`.`Schedule`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `cinebook`.`Schedule` (
-  `id` INT NOT NULL AUTO_INCREMENT ,
+  `id` INT NOT NULL ,
   `start_time` DATETIME NOT NULL ,
   `theatre` INT NOT NULL ,
   `movie` INT NOT NULL ,
   PRIMARY KEY (`id`) ,
   INDEX `fk_Schedule_Movie` (`movie` ASC) ,
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
   CONSTRAINT `fk_Schedule_Movie`
     FOREIGN KEY (`movie` )
     REFERENCES `cinebook`.`Movie` (`id` )
@@ -89,7 +88,7 @@ ENGINE = InnoDB;
 -- Table `cinebook`.`MovieComment`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `cinebook`.`MovieComment` (
-  `id` INT NOT NULL AUTO_INCREMENT ,
+  `id` INT NOT NULL ,
   `user_id` INT NOT NULL ,
   `movie_id` INT NOT NULL ,
   `comment_text` VARCHAR(1000) NOT NULL ,
@@ -97,7 +96,6 @@ CREATE  TABLE IF NOT EXISTS `cinebook`.`MovieComment` (
   PRIMARY KEY (`id`) ,
   INDEX `fk_MovieComment_User` (`user_id` ASC) ,
   INDEX `fk_MovieComment_Movie` (`movie_id` ASC) ,
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
   CONSTRAINT `fk_MovieComment_User`
     FOREIGN KEY (`user_id` )
     REFERENCES `cinebook`.`User` (`id` )
@@ -153,9 +151,9 @@ CREATE  TABLE IF NOT EXISTS `cinebook`.`UserComment` (
   `id` INT NOT NULL ,
   `postedBy` INT NOT NULL ,
   `postedTo` INT NOT NULL ,
-  `rating` FLOAT NULL ,
   `comment_text` VARCHAR(1000) NOT NULL ,
   `date_posted` DATETIME NOT NULL ,
+  `overall_rating` FLOAT NULL DEFAULT 0 ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
   INDEX `fk_UserComments_ByUser` (`postedBy` ASC) ,
@@ -172,6 +170,85 @@ CREATE  TABLE IF NOT EXISTS `cinebook`.`UserComment` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
+-- -----------------------------------------------------
+-- Table `cinebook`.`UserCommentRating`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `cinebook`.`UserCommentRating` (
+  `id` INT NOT NULL ,
+  `user_id` INT NOT NULL ,
+  `user_comment` INT NOT NULL ,
+  `rating` INT NOT NULL ,
+  INDEX `fk_UserCommentsRating_User` (`user_id` ASC) ,
+  INDEX `fk_UserCommentsRating_UserComment` (`user_comment` ASC) ,
+  PRIMARY KEY (`id`) ,
+  CONSTRAINT `fk_UserCommentsRating_User`
+    FOREIGN KEY (`user_id` )
+    REFERENCES `cinebook`.`User` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_UserCommentsRating_UserComment`
+    FOREIGN KEY (`user_comment` )
+    REFERENCES `cinebook`.`UserComment` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `cinebook`.`MovieUserRating`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `cinebook`.`MovieUserRating` (
+  `id` INT NOT NULL ,
+  `user_id` INT NOT NULL ,
+  `movie_id` INT NOT NULL ,
+  `rating` INT NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `fk_UserCommentsRating_User` (`user_id` ASC) ,
+  INDEX `fk_UserCommentsRating_UserComment` (`movie_id` ASC) ,
+  CONSTRAINT `fk_MovieUserRating_User`
+    FOREIGN KEY (`user_id` )
+    REFERENCES `cinebook`.`User` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_MovieUserRating_Movie`
+    FOREIGN KEY (`movie_id` )
+    REFERENCES `cinebook`.`Movie` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+USE `cinebook`;
+
+DELIMITER $$
+USE `cinebook`$$
+
+
+CREATE TRIGGER updateUserCommentOverallRating AFTER INSERT on UserCommentRating
+FOR EACH ROW
+BEGIN
+	UPDATE UserComment
+	SET overall_rating = (SELECT AVG(rating) from UserCommentRating where  user_comment = (SELECT user_comment from UserCommentRating WHERE id = NEW.id))
+	WHERE id = (SELECT user_comment from UserCommentRating WHERE id = NEW.id);
+END$$
+
+
+DELIMITER ;
+
+DELIMITER $$
+USE `cinebook`$$
+
+
+CREATE TRIGGER updateMovieOverallRating AFTER INSERT on MovieUserRating
+FOR EACH ROW
+BEGIN
+	UPDATE Movie
+	SET overall_rating = (SELECT AVG(rating) from MovieUserRating where  movie_id = (SELECT movie_id from MovieUserRating WHERE id = NEW.id))
+	WHERE id = (SELECT movie_id from MovieUserRating WHERE id = NEW.id);
+END$$
+
+
+DELIMITER ;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

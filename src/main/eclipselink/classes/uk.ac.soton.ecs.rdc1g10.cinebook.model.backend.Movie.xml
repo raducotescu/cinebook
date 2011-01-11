@@ -137,6 +137,23 @@
          </set-method-handle>
       </class-attribute>
       <class-attribute>
+         <name>overallRating</name>
+         <modifier>2</modifier>
+         <type-declaration>
+            <type-handle>
+               <type-name>java.lang.Float</type-name>
+            </type-handle>
+         </type-declaration>
+         <get-method-handle>
+            <method-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</method-declaring-type-name>
+            <method-signature>getOverallRating()</method-signature>
+         </get-method-handle>
+         <set-method-handle>
+            <method-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</method-declaring-type-name>
+            <method-signature>setOverallRating(java.lang.Float)</method-signature>
+         </set-method-handle>
+      </class-attribute>
+      <class-attribute>
          <name>poster</name>
          <modifier>2</modifier>
          <type-declaration>
@@ -185,23 +202,6 @@
          <set-method-handle>
             <method-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</method-declaring-type-name>
             <method-signature>setTitle(java.lang.String)</method-signature>
-         </set-method-handle>
-      </class-attribute>
-      <class-attribute>
-         <name>userRating</name>
-         <modifier>2</modifier>
-         <type-declaration>
-            <type-handle>
-               <type-name>float</type-name>
-            </type-handle>
-         </type-declaration>
-         <get-method-handle>
-            <method-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</method-declaring-type-name>
-            <method-signature>getUserRating()</method-signature>
-         </get-method-handle>
-         <set-method-handle>
-            <method-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</method-declaring-type-name>
-            <method-signature>setUserRating(float)</method-signature>
          </set-method-handle>
       </class-attribute>
       <class-attribute>
@@ -342,6 +342,19 @@
          </accessed-attribute-handle>
       </method>
       <method>
+         <name>getOverallRating</name>
+         <modifier>1</modifier>
+         <return-type-declaration>
+            <type-handle>
+               <type-name>java.lang.Float</type-name>
+            </type-handle>
+         </return-type-declaration>
+         <accessed-attribute-handle>
+            <attribute-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</attribute-declaring-type-name>
+            <attribute-name>overallRating</attribute-name>
+         </accessed-attribute-handle>
+      </method>
+      <method>
          <name>getPoster</name>
          <modifier>1</modifier>
          <return-type-declaration>
@@ -378,19 +391,6 @@
          <accessed-attribute-handle>
             <attribute-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</attribute-declaring-type-name>
             <attribute-name>title</attribute-name>
-         </accessed-attribute-handle>
-      </method>
-      <method>
-         <name>getUserRating</name>
-         <modifier>1</modifier>
-         <return-type-declaration>
-            <type-handle>
-               <type-name>float</type-name>
-            </type-handle>
-         </return-type-declaration>
-         <accessed-attribute-handle>
-            <attribute-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</attribute-declaring-type-name>
-            <attribute-name>userRating</attribute-name>
          </accessed-attribute-handle>
       </method>
       <method>
@@ -583,6 +583,28 @@
          </accessed-attribute-handle>
       </method>
       <method>
+         <name>setOverallRating</name>
+         <modifier>1</modifier>
+         <return-type-declaration>
+            <type-handle>
+               <type-name>void</type-name>
+            </type-handle>
+         </return-type-declaration>
+         <method-parameters>
+            <method-parameter>
+               <type-declaration>
+                  <type-handle>
+                     <type-name>java.lang.Float</type-name>
+                  </type-handle>
+               </type-declaration>
+            </method-parameter>
+         </method-parameters>
+         <accessed-attribute-handle>
+            <attribute-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</attribute-declaring-type-name>
+            <attribute-name>overallRating</attribute-name>
+         </accessed-attribute-handle>
+      </method>
+      <method>
          <name>setPoster</name>
          <modifier>1</modifier>
          <return-type-declaration>
@@ -646,28 +668,6 @@
          <accessed-attribute-handle>
             <attribute-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</attribute-declaring-type-name>
             <attribute-name>title</attribute-name>
-         </accessed-attribute-handle>
-      </method>
-      <method>
-         <name>setUserRating</name>
-         <modifier>1</modifier>
-         <return-type-declaration>
-            <type-handle>
-               <type-name>void</type-name>
-            </type-handle>
-         </return-type-declaration>
-         <method-parameters>
-            <method-parameter>
-               <type-declaration>
-                  <type-handle>
-                     <type-name>float</type-name>
-                  </type-handle>
-               </type-declaration>
-            </method-parameter>
-         </method-parameters>
-         <accessed-attribute-handle>
-            <attribute-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</attribute-declaring-type-name>
-            <attribute-name>userRating</attribute-name>
          </accessed-attribute-handle>
       </method>
       <method>

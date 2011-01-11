@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <descriptor type="relational">
-   <name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Schedule</name>
+   <name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.MovieUserRating</name>
    <class-handle>
-      <type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Schedule</type-name>
+      <type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.MovieUserRating</type-name>
    </class-handle>
    <transactional-policy type="relational">
-      <descriptor-alias>Schedule</descriptor-alias>
+      <descriptor-alias>Movieuserrating</descriptor-alias>
       <refresh-cache-policy/>
       <caching-policy>
          <cache-type>None</cache-type>
@@ -47,7 +47,7 @@
       <primary-key-policy>
          <primary-key-handles>
             <column-handle>
-               <column-table-name>Schedule</column-table-name>
+               <column-table-name>MovieUserRating</column-table-name>
                <column-name>id</column-name>
             </column-handle>
          </primary-key-handles>
@@ -57,18 +57,18 @@
       <mapping type="direct-to-field">
          <name>id</name>
          <attribute-handle>
-            <attribute-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Schedule</attribute-declaring-type-name>
+            <attribute-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.MovieUserRating</attribute-declaring-type-name>
             <attribute-name>id</attribute-name>
          </attribute-handle>
          <column-handle>
-            <column-table-name>Schedule</column-table-name>
+            <column-table-name>MovieUserRating</column-table-name>
             <column-name>id</column-name>
          </column-handle>
       </mapping>
       <mapping type="one-to-one">
          <name>movie</name>
          <attribute-handle>
-            <attribute-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Schedule</attribute-declaring-type-name>
+            <attribute-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.MovieUserRating</attribute-declaring-type-name>
             <attribute-name>movie</attribute-name>
          </attribute-handle>
          <reference-descriptor-handle>
@@ -76,43 +76,47 @@
          </reference-descriptor-handle>
          <indirection-type>value-holder-indirection</indirection-type>
          <reference-handle>
-            <reference-table-name>Schedule</reference-table-name>
-            <reference-name>fk_Schedule_Movie</reference-name>
+            <reference-table-name>MovieUserRating</reference-table-name>
+            <reference-name>fk_MovieUserRating_Movie</reference-name>
          </reference-handle>
       </mapping>
       <mapping type="direct-to-field">
-         <name>startTime</name>
+         <name>rating</name>
          <attribute-handle>
-            <attribute-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Schedule</attribute-declaring-type-name>
-            <attribute-name>startTime</attribute-name>
+            <attribute-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.MovieUserRating</attribute-declaring-type-name>
+            <attribute-name>rating</attribute-name>
          </attribute-handle>
          <column-handle>
-            <column-table-name>Schedule</column-table-name>
-            <column-name>start_time</column-name>
+            <column-table-name>MovieUserRating</column-table-name>
+            <column-name>rating</column-name>
          </column-handle>
       </mapping>
-      <mapping type="direct-to-field">
-         <name>theatre</name>
+      <mapping type="one-to-one">
+         <name>user</name>
          <attribute-handle>
-            <attribute-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Schedule</attribute-declaring-type-name>
-            <attribute-name>theatre</attribute-name>
+            <attribute-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.MovieUserRating</attribute-declaring-type-name>
+            <attribute-name>user</attribute-name>
          </attribute-handle>
-         <column-handle>
-            <column-table-name>Schedule</column-table-name>
-            <column-name>theatre</column-name>
-         </column-handle>
+         <reference-descriptor-handle>
+            <descriptor-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.User</descriptor-name>
+         </reference-descriptor-handle>
+         <indirection-type>value-holder-indirection</indirection-type>
+         <reference-handle>
+            <reference-table-name>MovieUserRating</reference-table-name>
+            <reference-name>fk_MovieUserRating_User</reference-name>
+         </reference-handle>
       </mapping>
    </mappings>
    <primary-table-handle>
-      <table-name>Schedule</table-name>
+      <table-name>MovieUserRating</table-name>
    </primary-table-handle>
    <uses-sequencing>true</uses-sequencing>
-   <sequence-number-name>SCHEDULE_SEQ</sequence-number-name>
+   <sequence-number-name>MOVIEUSERRATING_SEQ</sequence-number-name>
    <sequence-number-table-handle>
-      <table-name>Schedule</table-name>
+      <table-name>MovieUserRating</table-name>
    </sequence-number-table-handle>
    <sequence-number-column-handle>
-      <column-table-name>Schedule</column-table-name>
+      <column-table-name>MovieUserRating</column-table-name>
       <column-name>id</column-name>
    </sequence-number-column-handle>
 </descriptor>

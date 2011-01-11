@@ -148,6 +148,17 @@
          </column-handle>
       </mapping>
       <mapping type="direct-to-field">
+         <name>overallRating</name>
+         <attribute-handle>
+            <attribute-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</attribute-declaring-type-name>
+            <attribute-name>overallRating</attribute-name>
+         </attribute-handle>
+         <column-handle>
+            <column-table-name>Movie</column-table-name>
+            <column-name>overall_rating</column-name>
+         </column-handle>
+      </mapping>
+      <mapping type="direct-to-field">
          <name>poster</name>
          <attribute-handle>
             <attribute-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</attribute-declaring-type-name>
@@ -178,17 +189,6 @@
          <column-handle>
             <column-table-name>Movie</column-table-name>
             <column-name>title</column-name>
-         </column-handle>
-      </mapping>
-      <mapping type="direct-to-field">
-         <name>userRating</name>
-         <attribute-handle>
-            <attribute-declaring-type-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</attribute-declaring-type-name>
-            <attribute-name>userRating</attribute-name>
-         </attribute-handle>
-         <column-handle>
-            <column-table-name>Movie</column-table-name>
-            <column-name>user_rating</column-name>
          </column-handle>
       </mapping>
       <mapping type="direct-to-field">

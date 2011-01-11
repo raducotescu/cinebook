@@ -5,7 +5,7 @@
 <struts>
 	<constant name="struts.multipart.maxSize" value="4194304" />
 	<package name="basic" namespace="/" extends="struts-default">
-		
+
 		<interceptors>
 			<interceptor name="security"
 				class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.interceptors.SecurityInterceptor">
@@ -64,12 +64,29 @@
 			method="friendPage">
 			<result name="success">/pages/friend.jsp</result>
 		</action>
+		<action name="rateMovie" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.user.UserActions" method="rateMovie">
+			<result name="success" type="redirectAction">
+				<param name="actionName">movieDetails?movieID=${movieID}</param>
+				<param name="namespace">/movies</param>
+			</result>
+		</action>
+		<action name="rateComment" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.user.UserActions" method="rateComment">
+			<result name="success" type="redirectAction">
+				<param name="actionName">friend?friendID=${friendID}</param>
+				<param name="namespace">/user</param>
+			</result>
+		</action>
 	</package>
 	<package name="feeds" extends="basic" namespace="/feeds">
 		<action name="importedFeed"
 			class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.ie.FeederActions"
 			method="importedFeed">
 			<result name="success">/pages/importedfeed.jsp</result>
+		</action>
+		<action name="scheduleFeed"
+			class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.ie.FeederActions"
+			method="producedFeed">
+			<result name="success">/pages/schedule.xml</result>
 		</action>
 	</package>
 	<package name="movies" extends="basic" namespace="/movies">
@@ -83,33 +100,40 @@
 			method="movieDetails">
 			<result name="success">/pages/movieDetails.jsp</result>
 		</action>
-		<action name="add" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.movies.AdminMoviesActions" method="addMovie">
+		<action name="add"
+			class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.movies.AdminMoviesActions"
+			method="addMovie">
 			<result name="input">/pages/movieEditForm.jsp</result>
 			<interceptor-ref name="securedBasicStack">
-    			<param name="validation.validateAnnotatedMethodOnly">true</param>
-    			<param name="exception.logEnabled">true</param>
+				<param name="validation.validateAnnotatedMethodOnly">true</param>
+				<param name="exception.logEnabled">true</param>
 				<param name="exception.logLevel">ERROR</param>
-				<param name="exception.logCategory">cinebook</param>    			
+				<param name="exception.logCategory">cinebook</param>
 			</interceptor-ref>
 		</action>
-		<action name="edit" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.movies.AdminMoviesActions" method="editMovie">
+		<action name="edit"
+			class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.movies.AdminMoviesActions"
+			method="editMovie">
+			<result name="success" type="redirectAction">movieDetails?movieID=${movieID}
+			</result>
+			<result name="input">/pages/movieEditForm.jsp</result>
+			<interceptor-ref name="securedBasicStack">
+				<param name="validation.validateAnnotatedMethodOnly">true</param>
+				<param name="exception.logEnabled">true</param>
+				<param name="exception.logLevel">ERROR</param>
+				<param name="exception.logCategory">cinebook</param>
+			</interceptor-ref>
+		</action>
+		<action name="save"
+			class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.movies.AdminMoviesActions"
+			method="saveMovie">
 			<result name="success" type="redirectAction">movieDetails?movieID=${movieID}</result>
 			<result name="input">/pages/movieEditForm.jsp</result>
 			<interceptor-ref name="securedBasicStack">
-    			<param name="validation.validateAnnotatedMethodOnly">true</param>
-    			<param name="exception.logEnabled">true</param>
+				<param name="validation.validateAnnotatedMethodOnly">true</param>
+				<param name="exception.logEnabled">true</param>
 				<param name="exception.logLevel">ERROR</param>
-				<param name="exception.logCategory">cinebook</param>    			
-			</interceptor-ref>
-		</action>
-		<action name="save" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.movies.AdminMoviesActions" method="saveMovie">
-			<result name="success" type="redirectAction">movieDetails?movieID=${movieID}</result>
-			<result name="input">/pages/movieEditForm.jsp</result>
-			<interceptor-ref name="securedBasicStack">
-    			<param name="validation.validateAnnotatedMethodOnly">true</param>
-    			<param name="exception.logEnabled">true</param>
-				<param name="exception.logLevel">ERROR</param>
-				<param name="exception.logCategory">cinebook</param>    			
+				<param name="exception.logCategory">cinebook</param>
 			</interceptor-ref>
 		</action>
 	</package>

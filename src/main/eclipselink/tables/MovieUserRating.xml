@@ -1,17 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <table>
-   <short-name>MovieComment</short-name>
-   <last-refresh-timestamp>2011-01-10T13:33:03.252</last-refresh-timestamp>
+   <short-name>MovieUserRating</short-name>
+   <last-refresh-timestamp>2011-01-10T13:33:03.239</last-refresh-timestamp>
    <columns>
-      <column>
-         <name>comment_text</name>
-         <type>varchar</type>
-         <size>1000</size>
-      </column>
-      <column>
-         <name>date_posted</name>
-         <type>timestamp</type>
-      </column>
       <column>
          <name>id</name>
          <type>integer</type>
@@ -23,13 +14,17 @@
          <type>integer</type>
       </column>
       <column>
+         <name>rating</name>
+         <type>integer</type>
+      </column>
+      <column>
          <name>user_id</name>
          <type>integer</type>
       </column>
    </columns>
    <references>
       <table-association>
-         <name>fk_MovieComment_Movie</name>
+         <name>fk_MovieUserRating_Movie</name>
          <target-table-handle>
             <table-name>Movie</table-name>
          </target-table-handle>
@@ -37,7 +32,7 @@
          <column-pairs>
             <column-pair>
                <source-column-handle>
-                  <column-table-name>MovieComment</column-table-name>
+                  <column-table-name>MovieUserRating</column-table-name>
                   <column-name>movie_id</column-name>
                </source-column-handle>
                <target-column-handle>
@@ -48,7 +43,7 @@
          </column-pairs>
       </table-association>
       <table-association>
-         <name>fk_MovieComment_User</name>
+         <name>fk_MovieUserRating_User</name>
          <target-table-handle>
             <table-name>User</table-name>
          </target-table-handle>
@@ -56,7 +51,7 @@
          <column-pairs>
             <column-pair>
                <source-column-handle>
-                  <column-table-name>MovieComment</column-table-name>
+                  <column-table-name>MovieUserRating</column-table-name>
                   <column-name>user_id</column-name>
                </source-column-handle>
                <target-column-handle>

@@ -7,6 +7,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie;
 import uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Schedule;
+import uk.ac.soton.ecs.rdc1g10.cinebook.model.services.CFMovies;
 import uk.ac.soton.ecs.rdc1g10.cinebook.model.services.Movies;
 import uk.ac.soton.ecs.rdc1g10.cinebook.model.services.ScheduleEntries;
 import uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.BaseAction;
@@ -23,6 +24,7 @@ public class MoviesActions extends BaseAction implements ModelDriven<Movie>,
 	private Integer movieID;
 	private Map<String, Object> session;
 	private boolean movieInDatabase;
+	private Collection<Movie> recommendations;
 
 	@Override
 	public Movie getModel() {
@@ -33,6 +35,7 @@ public class MoviesActions extends BaseAction implements ModelDriven<Movie>,
 		if (movieID != null) {
 			movie = Movies.getMovieById(movieID);
 			if (movie != null) {
+				recommendations = CFMovies.getRecommendations(movieID);
 				return SUCCESS;
 			}
 		}
@@ -77,5 +80,9 @@ public class MoviesActions extends BaseAction implements ModelDriven<Movie>,
 
 	public boolean isMovieInDatabase() {
 		return movieInDatabase;
+	}
+
+	public Collection<Movie> getRecommendations() {
+		return recommendations;
 	}
 }

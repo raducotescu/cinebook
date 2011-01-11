@@ -1,35 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <table>
-   <short-name>MovieComment</short-name>
-   <last-refresh-timestamp>2011-01-10T13:33:03.252</last-refresh-timestamp>
+   <short-name>CFMovies</short-name>
+   <last-refresh-timestamp>2011-01-11T00:47:58.824</last-refresh-timestamp>
    <columns>
       <column>
-         <name>comment_text</name>
-         <type>varchar</type>
-         <size>1000</size>
+         <name>count</name>
+         <type>integer</type>
       </column>
       <column>
-         <name>date_posted</name>
-         <type>timestamp</type>
-      </column>
-      <column>
-         <name>id</name>
+         <name>movie1</name>
          <type>integer</type>
          <unique>true</unique>
          <primary-key>true</primary-key>
       </column>
       <column>
-         <name>movie_id</name>
+         <name>movie2</name>
          <type>integer</type>
+         <unique>true</unique>
+         <primary-key>true</primary-key>
       </column>
       <column>
-         <name>user_id</name>
+         <name>sum</name>
          <type>integer</type>
       </column>
    </columns>
    <references>
       <table-association>
-         <name>fk_MovieComment_Movie</name>
+         <name>fk_CFMovies_Movie1</name>
          <target-table-handle>
             <table-name>Movie</table-name>
          </target-table-handle>
@@ -37,8 +34,8 @@
          <column-pairs>
             <column-pair>
                <source-column-handle>
-                  <column-table-name>MovieComment</column-table-name>
-                  <column-name>movie_id</column-name>
+                  <column-table-name>CFMovies</column-table-name>
+                  <column-name>movie1</column-name>
                </source-column-handle>
                <target-column-handle>
                   <column-table-name>Movie</column-table-name>
@@ -48,19 +45,19 @@
          </column-pairs>
       </table-association>
       <table-association>
-         <name>fk_MovieComment_User</name>
+         <name>fk_CFMovies_Movie2</name>
          <target-table-handle>
-            <table-name>User</table-name>
+            <table-name>Movie</table-name>
          </target-table-handle>
          <on-database>true</on-database>
          <column-pairs>
             <column-pair>
                <source-column-handle>
-                  <column-table-name>MovieComment</column-table-name>
-                  <column-name>user_id</column-name>
+                  <column-table-name>CFMovies</column-table-name>
+                  <column-name>movie2</column-name>
                </source-column-handle>
                <target-column-handle>
-                  <column-table-name>User</column-table-name>
+                  <column-table-name>Movie</column-table-name>
                   <column-name>id</column-name>
                </target-column-handle>
             </column-pair>

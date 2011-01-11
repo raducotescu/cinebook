@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<object-persistence xmlns="http://www.eclipse.org/eclipselink/xsds/persistence" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:eclipselink="http://www.eclipse.org/eclipselink/xsds/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="Eclipse Persistence Services - 2.1.2.v20101206-r8635">
+<object-persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:eclipselink="http://www.eclipse.org/eclipselink/xsds/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
    <name>cinebook</name>
    <class-mapping-descriptors>
       <class-mapping-descriptor xsi:type="relational-class-mapping-descriptor">
@@ -9,7 +9,11 @@
             <field table="Booking" name="id" xsi:type="column"/>
          </primary-key>
          <events/>
-         <querying/>
+         <querying>
+            <does-exist-query>
+               <existence-check>check-database</existence-check>
+            </does-exist-query>
+         </querying>
          <attribute-mappings>
             <attribute-mapping xsi:type="direct-mapping">
                <attribute-name>id</attribute-name>
@@ -59,10 +63,82 @@
             <sequence-name>BOOKING_SEQ</sequence-name>
             <sequence-field table="Booking" name="id"/>
          </sequencing>
+         <caching>
+            <cache-type>none</cache-type>
+         </caching>
+         <remote-caching>
+            <cache-type>none</cache-type>
+         </remote-caching>
          <instantiation/>
          <copying xsi:type="instantiation-copy-policy"/>
          <tables>
             <table name="Booking"/>
+         </tables>
+      </class-mapping-descriptor>
+      <class-mapping-descriptor xsi:type="relational-class-mapping-descriptor">
+         <class>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.CFMovie</class>
+         <alias>Cfmovies</alias>
+         <primary-key>
+            <field table="CFMovies" name="movie2" xsi:type="column"/>
+            <field table="CFMovies" name="movie1" xsi:type="column"/>
+         </primary-key>
+         <events/>
+         <querying>
+            <does-exist-query>
+               <existence-check>check-database</existence-check>
+            </does-exist-query>
+         </querying>
+         <attribute-mappings>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>count</attribute-name>
+               <field table="CFMovies" name="count" xsi:type="column"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="one-to-one-mapping">
+               <attribute-name>movie1</attribute-name>
+               <reference-class>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</reference-class>
+               <foreign-key>
+                  <field-reference>
+                     <source-field table="CFMovies" name="movie1" xsi:type="column"/>
+                     <target-field table="Movie" name="id" xsi:type="column"/>
+                  </field-reference>
+               </foreign-key>
+               <foreign-key-fields>
+                  <field table="CFMovies" name="movie1" xsi:type="column"/>
+               </foreign-key-fields>
+               <indirection xsi:type="value-holder-indirection-policy"/>
+               <selection-query xsi:type="read-object-query"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="one-to-one-mapping">
+               <attribute-name>movie2</attribute-name>
+               <reference-class>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</reference-class>
+               <foreign-key>
+                  <field-reference>
+                     <source-field table="CFMovies" name="movie2" xsi:type="column"/>
+                     <target-field table="Movie" name="id" xsi:type="column"/>
+                  </field-reference>
+               </foreign-key>
+               <foreign-key-fields>
+                  <field table="CFMovies" name="movie2" xsi:type="column"/>
+               </foreign-key-fields>
+               <indirection xsi:type="value-holder-indirection-policy"/>
+               <selection-query xsi:type="read-object-query"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>sum</attribute-name>
+               <field table="CFMovies" name="sum" xsi:type="column"/>
+            </attribute-mapping>
+         </attribute-mappings>
+         <descriptor-type>independent</descriptor-type>
+         <caching>
+            <cache-type>none</cache-type>
+         </caching>
+         <remote-caching>
+            <cache-type>none</cache-type>
+         </remote-caching>
+         <instantiation/>
+         <copying xsi:type="instantiation-copy-policy"/>
+         <tables>
+            <table name="CFMovies"/>
          </tables>
       </class-mapping-descriptor>
       <class-mapping-descriptor xsi:type="relational-class-mapping-descriptor">
@@ -72,7 +148,11 @@
             <field table="Friend" name="id" xsi:type="column"/>
          </primary-key>
          <events/>
-         <querying/>
+         <querying>
+            <does-exist-query>
+               <existence-check>check-database</existence-check>
+            </does-exist-query>
+         </querying>
          <attribute-mappings>
             <attribute-mapping xsi:type="direct-mapping">
                <attribute-name>id</attribute-name>
@@ -118,6 +198,12 @@
             <sequence-name>FRIEND_SEQ</sequence-name>
             <sequence-field table="Friend" name="id"/>
          </sequencing>
+         <caching>
+            <cache-type>none</cache-type>
+         </caching>
+         <remote-caching>
+            <cache-type>none</cache-type>
+         </remote-caching>
          <instantiation/>
          <copying xsi:type="instantiation-copy-policy"/>
          <tables>
@@ -190,6 +276,10 @@
                <field table="Movie" name="id" xsi:type="column"/>
             </attribute-mapping>
             <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>overallRating</attribute-name>
+               <field table="Movie" name="overall_rating" xsi:type="column"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
                <attribute-name>poster</attribute-name>
                <field table="Movie" name="poster" xsi:type="column"/>
             </attribute-mapping>
@@ -200,10 +290,6 @@
             <attribute-mapping xsi:type="direct-mapping">
                <attribute-name>title</attribute-name>
                <field table="Movie" name="title" xsi:type="column"/>
-            </attribute-mapping>
-            <attribute-mapping xsi:type="direct-mapping">
-               <attribute-name>userRating</attribute-name>
-               <field table="Movie" name="user_rating" xsi:type="column"/>
             </attribute-mapping>
             <attribute-mapping xsi:type="direct-mapping">
                <attribute-name>year</attribute-name>
@@ -234,7 +320,11 @@
             <field table="MovieComment" name="id" xsi:type="column"/>
          </primary-key>
          <events/>
-         <querying/>
+         <querying>
+            <does-exist-query>
+               <existence-check>check-database</existence-check>
+            </does-exist-query>
+         </querying>
          <attribute-mappings>
             <attribute-mapping xsi:type="direct-mapping">
                <attribute-name>commentText</attribute-name>
@@ -284,10 +374,85 @@
             <sequence-name>MOVIECOMMENT_SEQ</sequence-name>
             <sequence-field table="MovieComment" name="id"/>
          </sequencing>
+         <caching>
+            <cache-type>none</cache-type>
+         </caching>
+         <remote-caching>
+            <cache-type>none</cache-type>
+         </remote-caching>
          <instantiation/>
          <copying xsi:type="instantiation-copy-policy"/>
          <tables>
             <table name="MovieComment"/>
+         </tables>
+      </class-mapping-descriptor>
+      <class-mapping-descriptor xsi:type="relational-class-mapping-descriptor">
+         <class>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.MovieUserRating</class>
+         <alias>Movieuserrating</alias>
+         <primary-key>
+            <field table="MovieUserRating" name="id" xsi:type="column"/>
+         </primary-key>
+         <events/>
+         <querying>
+            <does-exist-query>
+               <existence-check>check-database</existence-check>
+            </does-exist-query>
+         </querying>
+         <attribute-mappings>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>id</attribute-name>
+               <field table="MovieUserRating" name="id" xsi:type="column"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="one-to-one-mapping">
+               <attribute-name>movie</attribute-name>
+               <reference-class>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</reference-class>
+               <foreign-key>
+                  <field-reference>
+                     <source-field table="MovieUserRating" name="movie_id" xsi:type="column"/>
+                     <target-field table="Movie" name="id" xsi:type="column"/>
+                  </field-reference>
+               </foreign-key>
+               <foreign-key-fields>
+                  <field table="MovieUserRating" name="movie_id" xsi:type="column"/>
+               </foreign-key-fields>
+               <indirection xsi:type="value-holder-indirection-policy"/>
+               <selection-query xsi:type="read-object-query"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>rating</attribute-name>
+               <field table="MovieUserRating" name="rating" xsi:type="column"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="one-to-one-mapping">
+               <attribute-name>user</attribute-name>
+               <reference-class>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.User</reference-class>
+               <foreign-key>
+                  <field-reference>
+                     <source-field table="MovieUserRating" name="user_id" xsi:type="column"/>
+                     <target-field table="User" name="id" xsi:type="column"/>
+                  </field-reference>
+               </foreign-key>
+               <foreign-key-fields>
+                  <field table="MovieUserRating" name="user_id" xsi:type="column"/>
+               </foreign-key-fields>
+               <indirection xsi:type="value-holder-indirection-policy"/>
+               <selection-query xsi:type="read-object-query"/>
+            </attribute-mapping>
+         </attribute-mappings>
+         <descriptor-type>independent</descriptor-type>
+         <sequencing>
+            <sequence-name>MOVIEUSERRATING_SEQ</sequence-name>
+            <sequence-field table="MovieUserRating" name="id"/>
+         </sequencing>
+         <caching>
+            <cache-type>none</cache-type>
+         </caching>
+         <remote-caching>
+            <cache-type>none</cache-type>
+         </remote-caching>
+         <instantiation/>
+         <copying xsi:type="instantiation-copy-policy"/>
+         <tables>
+            <table name="MovieUserRating"/>
          </tables>
       </class-mapping-descriptor>
       <class-mapping-descriptor xsi:type="relational-class-mapping-descriptor">
@@ -297,7 +462,11 @@
             <field table="Schedule" name="id" xsi:type="column"/>
          </primary-key>
          <events/>
-         <querying/>
+         <querying>
+            <does-exist-query>
+               <existence-check>check-database</existence-check>
+            </does-exist-query>
+         </querying>
          <attribute-mappings>
             <attribute-mapping xsi:type="direct-mapping">
                <attribute-name>id</attribute-name>
@@ -332,6 +501,12 @@
             <sequence-name>SCHEDULE_SEQ</sequence-name>
             <sequence-field table="Schedule" name="id"/>
          </sequencing>
+         <caching>
+            <cache-type>none</cache-type>
+         </caching>
+         <remote-caching>
+            <cache-type>none</cache-type>
+         </remote-caching>
          <instantiation/>
          <copying xsi:type="instantiation-copy-policy"/>
          <tables>
@@ -384,6 +559,9 @@
                   <outer-join-subclasses>false</outer-join-subclasses>
                </query>
             </queries>
+            <does-exist-query>
+               <existence-check>check-database</existence-check>
+            </does-exist-query>
          </querying>
          <attribute-mappings>
             <attribute-mapping xsi:type="direct-mapping">
@@ -416,6 +594,12 @@
             <sequence-name>USER_SEQ</sequence-name>
             <sequence-field table="User" name="id"/>
          </sequencing>
+         <caching>
+            <cache-type>none</cache-type>
+         </caching>
+         <remote-caching>
+            <cache-type>none</cache-type>
+         </remote-caching>
          <instantiation/>
          <copying xsi:type="instantiation-copy-policy"/>
          <tables>
@@ -429,7 +613,11 @@
             <field table="UserComment" name="id" xsi:type="column"/>
          </primary-key>
          <events/>
-         <querying/>
+         <querying>
+            <does-exist-query>
+               <existence-check>check-database</existence-check>
+            </does-exist-query>
+         </querying>
          <attribute-mappings>
             <attribute-mapping xsi:type="direct-mapping">
                <attribute-name>commentText</attribute-name>
@@ -442,6 +630,10 @@
             <attribute-mapping xsi:type="direct-mapping">
                <attribute-name>id</attribute-name>
                <field table="UserComment" name="id" xsi:type="column"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>overallRating</attribute-name>
+               <field table="UserComment" name="overall_rating" xsi:type="column"/>
             </attribute-mapping>
             <attribute-mapping xsi:type="one-to-one-mapping">
                <attribute-name>postedby</attribute-name>
@@ -473,20 +665,91 @@
                <indirection xsi:type="value-holder-indirection-policy"/>
                <selection-query xsi:type="read-object-query"/>
             </attribute-mapping>
-            <attribute-mapping xsi:type="direct-mapping">
-               <attribute-name>rating</attribute-name>
-               <field table="UserComment" name="rating" xsi:type="column"/>
-            </attribute-mapping>
          </attribute-mappings>
          <descriptor-type>independent</descriptor-type>
          <sequencing>
             <sequence-name>USERCOMMENT_SEQ</sequence-name>
             <sequence-field table="UserComment" name="id"/>
          </sequencing>
+         <caching>
+            <cache-type>none</cache-type>
+         </caching>
+         <remote-caching>
+            <cache-type>none</cache-type>
+         </remote-caching>
          <instantiation/>
          <copying xsi:type="instantiation-copy-policy"/>
          <tables>
             <table name="UserComment"/>
+         </tables>
+      </class-mapping-descriptor>
+      <class-mapping-descriptor xsi:type="relational-class-mapping-descriptor">
+         <class>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.UserCommentRating</class>
+         <alias>Usercommentrating</alias>
+         <primary-key>
+            <field table="UserCommentRating" name="id" xsi:type="column"/>
+         </primary-key>
+         <events/>
+         <querying>
+            <does-exist-query>
+               <existence-check>check-database</existence-check>
+            </does-exist-query>
+         </querying>
+         <attribute-mappings>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>id</attribute-name>
+               <field table="UserCommentRating" name="id" xsi:type="column"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="direct-mapping">
+               <attribute-name>rating</attribute-name>
+               <field table="UserCommentRating" name="rating" xsi:type="column"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="one-to-one-mapping">
+               <attribute-name>user</attribute-name>
+               <reference-class>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.User</reference-class>
+               <foreign-key>
+                  <field-reference>
+                     <source-field table="UserCommentRating" name="user_id" xsi:type="column"/>
+                     <target-field table="User" name="id" xsi:type="column"/>
+                  </field-reference>
+               </foreign-key>
+               <foreign-key-fields>
+                  <field table="UserCommentRating" name="user_id" xsi:type="column"/>
+               </foreign-key-fields>
+               <indirection xsi:type="value-holder-indirection-policy"/>
+               <selection-query xsi:type="read-object-query"/>
+            </attribute-mapping>
+            <attribute-mapping xsi:type="one-to-one-mapping">
+               <attribute-name>userComment</attribute-name>
+               <reference-class>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.UserComment</reference-class>
+               <foreign-key>
+                  <field-reference>
+                     <source-field table="UserCommentRating" name="user_comment" xsi:type="column"/>
+                     <target-field table="UserComment" name="id" xsi:type="column"/>
+                  </field-reference>
+               </foreign-key>
+               <foreign-key-fields>
+                  <field table="UserCommentRating" name="user_comment" xsi:type="column"/>
+               </foreign-key-fields>
+               <indirection xsi:type="value-holder-indirection-policy"/>
+               <selection-query xsi:type="read-object-query"/>
+            </attribute-mapping>
+         </attribute-mappings>
+         <descriptor-type>independent</descriptor-type>
+         <sequencing>
+            <sequence-name>USERCOMMENTRATING_SEQ</sequence-name>
+            <sequence-field table="UserCommentRating" name="id"/>
+         </sequencing>
+         <caching>
+            <cache-type>none</cache-type>
+         </caching>
+         <remote-caching>
+            <cache-type>none</cache-type>
+         </remote-caching>
+         <instantiation/>
+         <copying xsi:type="instantiation-copy-policy"/>
+         <tables>
+            <table name="UserCommentRating"/>
          </tables>
       </class-mapping-descriptor>
    </class-mapping-descriptors>

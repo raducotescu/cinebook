@@ -6,22 +6,28 @@
    <class-repository>
       <user-type-names>
          <name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Booking</name>
+         <name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.CFMovie</name>
          <name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Friend</name>
          <name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</name>
          <name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.MovieComment</name>
+         <name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.MovieUserRating</name>
          <name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Schedule</name>
          <name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.User</name>
          <name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.UserComment</name>
+         <name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.UserCommentRating</name>
       </user-type-names>
    </class-repository>
    <descriptor-names>
       <descriptor-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Booking</descriptor-name>
+      <descriptor-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.CFMovie</descriptor-name>
       <descriptor-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Friend</descriptor-name>
       <descriptor-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Movie</descriptor-name>
       <descriptor-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.MovieComment</descriptor-name>
+      <descriptor-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.MovieUserRating</descriptor-name>
       <descriptor-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.Schedule</descriptor-name>
       <descriptor-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.User</descriptor-name>
       <descriptor-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.UserComment</descriptor-name>
+      <descriptor-name>uk.ac.soton.ecs.rdc1g10.cinebook.model.backend.UserCommentRating</descriptor-name>
    </descriptor-names>
    <defaults-policy type="relational">
       <use-method-accessing>false</use-method-accessing>
@@ -55,13 +61,16 @@
       </development-login-spec-handle>
       <table-names>
          <name>Booking</name>
+         <name>CFMovies</name>
          <name>Friend</name>
          <name>Movie</name>
          <name>MovieComment</name>
+         <name>MovieUserRating</name>
          <name>Schedule</name>
          <name>SEQUENCER</name>
          <name>User</name>
          <name>UserComment</name>
+         <name>UserCommentRating</name>
       </table-names>
    </table-repository>
    <sequencing>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s" %>
 <s:form action="postComment" namespace="/user" method="POST">
-	<s:textfield cssStyle="display:none" name="friendID" id="friendID" />
+	<s:hidden name="friendID" id="friendID" />
 	<s:textarea name="commentText" id="commentText" />
 	<script type="text/javascript">
 		CKEDITOR.replace('commentText',
