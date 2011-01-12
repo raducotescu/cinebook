@@ -34,7 +34,6 @@ public class AdminMoviesActions extends MoviesActions implements
 	private String startTime;
 	private Integer theatre;
 	private Collection<Movie> movies;
-	private Integer movieID;
 	private Schedule s;
 	private Integer scheduleEntryId;
 	
@@ -47,7 +46,7 @@ public class AdminMoviesActions extends MoviesActions implements
 		}
 		if(scheduleEntryId != null) {
 			s = ScheduleEntries.getScheduleEntryById(scheduleEntryId);
-			movieID = s.getMovie().getId();
+			this.setMovieID(s.getMovie().getId());
 			theatre = s.getTheatre();
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 			startTime = sdf.format(s.getStartTime());
@@ -58,7 +57,7 @@ public class AdminMoviesActions extends MoviesActions implements
 	}
 	
 	public String saveMovieScheduleEntry() throws Exception {
-		Movie movie = Movies.getMovieById(movieID);
+		Movie movie = Movies.getMovieById(this.getMovieID());
 		if(scheduleEntryId != null) {
 			s = ScheduleEntries.getScheduleEntryById(scheduleEntryId);
 			s.setMovie(movie);
@@ -96,7 +95,7 @@ public class AdminMoviesActions extends MoviesActions implements
 			addActionError("You are trying to edit an inexistent movie!");
 			return ERROR;
 		}
-		return INPUT;
+		return SUCCESS;
 	}
 
 	public String saveMovie() throws Exception {
@@ -110,10 +109,8 @@ public class AdminMoviesActions extends MoviesActions implements
 			return ERROR;
 		}
 		if (picture != null) {
-			String token = CineBookUtils.getMD5Hash(CineBookFileUtils
-					.getBytesFromFile(picture));
-			if (getModel().getPoster() != null
-					|| !token.equals(getModel().getPoster())) {
+			String token = CineBookUtils.getMD5Hash(CineBookFileUtils.getBytesFromFile(picture));
+			if (getModel().getPoster() != null|| !token.equals(getModel().getPoster())) {
 				processMoviePoster(token);
 			}
 		}
@@ -124,7 +121,6 @@ public class AdminMoviesActions extends MoviesActions implements
 
 	private void processMoviePoster(String token)
 			throws NoSuchAlgorithmException, IOException {
-
 		getModel().setPoster(token + "." + CineBookUtils.getExtension(pictureFileName));
 		String uploadPath = getContext().getRealPath("images" + File.separator + "posters");
 		File uploadedFile = new File(uploadPath, token + "." + CineBookUtils.getExtension(pictureFileName));
@@ -174,14 +170,6 @@ public class AdminMoviesActions extends MoviesActions implements
 
 	public Collection<Movie> getMovies() {
 		return movies;
-	}
-	
-	public Integer getMovieID() {
-		return movieID;
-	}
-
-	public void setMovieID(Integer movieID) {
-		this.movieID = movieID;
 	}
 
 	public void setScheduleEntryId(Integer scheduleEntryId) {

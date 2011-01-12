@@ -16,7 +16,7 @@
 	    <s:submit value="Sign In"/>
 	</s:form>
 	<script type="text/javascript">
-	$('document').ready(function() {$('input:submit', '#signInForm').button().click(function(e) {if(checkInputs()) {$('#signInForm form').submit();}});
+	$('document').ready(function() {$('input:submit', '#signInForm').button().click(function(e) {e.preventDefault(); if(checkInputs()) {$('#signInForm form').submit();}});
 		$('#usernameNeeded').dialog({autoOpen: false, draggable: false, modal: true, resizable: false, height: 120,	close: function(event, ui) { $('#username').focus(); }});
 		$('#passwordNeeded').dialog({autoOpen: false, draggable: false,	modal: true, resizable: false, height: 120,	close: function(event, ui) { $('#password').focus(); }});
 		function checkInputs() {

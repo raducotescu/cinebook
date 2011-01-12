@@ -11,9 +11,9 @@
 	</div>
 
 	<s:form action="completeBooking" namespace="/user" method="POST">
-		<s:select name="scheduleID" list="entriesForMovie" listKey="id" listValue="%{sdf.format(startTime)}" />
-		<s:select name="seats" list="#{'1':'1', '2':'2', '3':'3', '4':'4'}" />
-		<s:submit />
+		<s:select name="scheduleID" list="entriesForMovie" listKey="id" listValue="%{sdf.format(startTime)}" label="Date and time" />
+		<s:select name="seats" list="#{'1':'1', '2':'2', '3':'3', '4':'4'}" label="Seats" />
+		<s:submit value="Book" />
 	</s:form>
 </s:if>
 <jsp:include page="footer.jsp" />

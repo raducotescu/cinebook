@@ -5,7 +5,7 @@
 </jsp:include>
 <h2>Edit Movie</h2>
 <s:form id="movieEditForm" action="save" namespace="/movies" method="POST" enctype="multipart/form-data">
-	<s:textfield id="movieID" name="movieID" cssStyle="display:none" />
+	<s:hidden id="movieID" name="movieID" />
 	<s:textfield id="title" name="title" label="Title" />
 	<s:textfield id="year" name="year" label="Year" />
 	<s:textfield id="cast" name="cast" label="Cast"/>

@@ -6,12 +6,12 @@
 <s:if test="bookings.size > 0">
 <h2>Bookings</h2>
 <s:iterator value="bookings">
-	<strong>Date:</strong><s:date name="scheduleEntry.startTime" format="yyyy-MM-dd HH:mm" />
-	<strong>Seats:</strong>${seats}
+	<strong>Date:</strong> <s:date name="scheduleEntry.startTime" format="yyyy-MM-dd HH:mm" />
+	<strong>Seats:</strong> ${seats}
 	<s:url namespace="/movies" action="movieDetails" var="movieDetails">
 		<s:param name="movieID">${scheduleEntry.movie.id}</s:param>
 	</s:url>
-	<strong>Movie:</strong><s:a href="%{movieDetails}">${scheduleEntry.movie.title}</s:a>
+	<strong>Movie:</strong> <s:a href="%{movieDetails}">${scheduleEntry.movie.title}</s:a>
 	<hr />
 </s:iterator>
 </s:if>
