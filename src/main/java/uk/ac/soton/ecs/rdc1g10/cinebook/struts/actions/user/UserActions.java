@@ -91,8 +91,7 @@ public class UserActions extends BaseAction implements SessionAware, Preparable 
 		Friend f = Friends.getFriendship(user.getId(), friendID);
 			if (f != null) {
 				friend = f.getUser1().getId().equals(user.getId()) ? f.getUser2() : f.getUser1();
-				comments = UserComments.getCommentsPostedToUser(friendID,
-						commentsOrderByDate);
+				comments = UserComments.getCommentsPostedToUser(friendID, commentsOrderByDate);
 				return SUCCESS;
 			} else {
 				addActionError("You are not friends with the indicated user!");
@@ -101,13 +100,21 @@ public class UserActions extends BaseAction implements SessionAware, Preparable 
 		} else if(userID != null && userID == user.getId()) {
 			friend = user;
 			comments = UserComments.getCommentsPostedToUser(userID, commentsOrderByDate);
-					return SUCCESS;
+			return SUCCESS;
 		} 
 		addActionError("You aren't allowed to view the requested page!");
 		return ERROR;
 	}
 
 	public String postCommentToUserPage() throws Exception {
+		if(userID != null) {
+			if(!CineBookUtils.isEmptyString(commentText)) {
+				UserComments.save(commentText, user, user, new Date());
+				return "owncomment";
+			} else {
+				return "owncomment-input";
+			}
+		}
 		if (friendID == null || CineBookUtils.isEmptyString(commentText)) {
 			return INPUT;
 		}
@@ -275,6 +282,10 @@ public class UserActions extends BaseAction implements SessionAware, Preparable 
 
 	public User getUser() {
 		return user;
+	}
+	
+	public Integer getUserID() {
+		return userID;
 	}
 
 	public void setUserID(Integer userID) {

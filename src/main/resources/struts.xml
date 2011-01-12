@@ -42,6 +42,8 @@
 		<action name="postComment" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.user.UserActions"	method="postCommentToUserPage">
 			<result name="success" type="redirectAction">friend?friendID=${friendID}</result>
 			<result name="input" type="redirectAction">friend?friendID=${friendID}</result>
+			<result name="owncomment" type="redirectAction">myPage?userID=${userID}</result>
+			<result name="owncomment-input" type="redirectAction">myPage?userID=${userID}</result>
 		</action>
 		<action name="friends" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.user.UserActions"	method="viewFriends">
 			<result name="success">/pages/friends.jsp</result>

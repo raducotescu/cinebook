@@ -2,6 +2,7 @@
 <%@ taglib uri="/struts-tags" prefix="s" %>
 <s:form action="postComment" namespace="/user" method="POST">
 	<s:hidden name="friendID" id="friendID" />
+	<s:hidden name="userID" id="userID" />
 	<s:textarea name="commentText" id="commentText" />
 	<script type="text/javascript">
 		CKEDITOR.replace('commentText',
