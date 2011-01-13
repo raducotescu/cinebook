@@ -22,9 +22,15 @@ import uk.ac.soton.ecs.rdc1g10.cinebook.struts.interceptors.SecurityInterceptor;
 import uk.ac.soton.ecs.rdc1g10.cinebook.utils.CineBookFileUtils;
 import uk.ac.soton.ecs.rdc1g10.cinebook.utils.CineBookUtils;
 
+import com.opensymphony.xwork2.validator.annotations.IntRangeFieldValidator;
+import com.opensymphony.xwork2.validator.annotations.RequiredFieldValidator;
+import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
+import com.opensymphony.xwork2.validator.annotations.Validations;
+import com.opensymphony.xwork2.validator.annotations.ValidatorType;
+
 @RequiresAuthentication
-public class AdminMoviesActions extends MoviesActions implements
-		ServletContextAware {
+@Validations
+public class AdminMoviesActions extends MoviesActions implements ServletContextAware {
 
 	private static final long serialVersionUID = -2576338521077588478L;
 	private File picture;
@@ -38,9 +44,20 @@ public class AdminMoviesActions extends MoviesActions implements
 	private Integer scheduleEntryId;
 	
 	@SuppressWarnings("unchecked")
+	@Override
+	public void prepare() throws Exception {
+		super.prepare();
+		movies = (Collection<Movie>) Database.readAll(Movie.class);
+	}
+	
+	public void validate() {
+		if(getModel().getPoster() == null && picture == null) {
+			addFieldError("picture", "Please add a poster file for the movie.");
+		}
+	}
+	
 	public String editSchedule() throws Exception {
-		if (((User) getSession().get(SecurityInterceptor.USER_OBJECT))
-				.getRole() < 1) {
+		if (((User) getSession().get(SecurityInterceptor.USER_OBJECT)).getRole() < 1) {
 			addActionError("Your authentication level denies you this action!");
 			return ERROR;
 		}
@@ -52,25 +69,23 @@ public class AdminMoviesActions extends MoviesActions implements
 			startTime = sdf.format(s.getStartTime());
 			scheduleEntryId = s.getId();
 		}
-		movies = (Collection<Movie>) Database.readAll(Movie.class);
 		return SUCCESS;
 	}
 	
+	@Validations(
+		requiredFields={@RequiredFieldValidator(fieldName="theatre", message="Please enter a theatre.", type=ValidatorType.SIMPLE)}
+	)
 	public String saveMovieScheduleEntry() throws Exception {
 		Movie movie = Movies.getMovieById(this.getMovieID());
 		if(scheduleEntryId != null) {
 			s = ScheduleEntries.getScheduleEntryById(scheduleEntryId);
-			s.setMovie(movie);
-			s.setStartTime(new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(startTime));
-			s.setTheatre(theatre);
-			ScheduleEntries.save(s);
 		} else {
 			s = new Schedule();
-			s.setMovie(movie);
-			s.setStartTime(new SimpleDateFormat("yyyy-MM-dd H:m").parse(startTime));
-			s.setTheatre(theatre);
-			ScheduleEntries.save(s);
 		}
+		s.setMovie(movie);
+		s.setStartTime(new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(startTime));
+		s.setTheatre(theatre);
+		ScheduleEntries.save(s);
 		return SUCCESS;
 	}
 
@@ -86,8 +101,7 @@ public class AdminMoviesActions extends MoviesActions implements
 	}
 	
 	public String editMovie() throws Exception {
-		if (((User) getSession().get(SecurityInterceptor.USER_OBJECT))
-				.getRole() < 1) {
+		if (((User) getSession().get(SecurityInterceptor.USER_OBJECT)).getRole() < 1) {
 			addActionError("Your authentication level denies you this action!");
 			return ERROR;
 		}
@@ -97,10 +111,25 @@ public class AdminMoviesActions extends MoviesActions implements
 		}
 		return SUCCESS;
 	}
-
+	
+	@Validations( requiredStrings={
+			@RequiredStringValidator(fieldName="title", message="Please enter the title.", type=ValidatorType.SIMPLE),
+			@RequiredStringValidator(fieldName="cast", message="Please enter the cast.", type=ValidatorType.SIMPLE),
+			@RequiredStringValidator(fieldName="director", message="Please enter the director's name.", type=ValidatorType.SIMPLE),
+			@RequiredStringValidator(fieldName="genre", message="Please enter a genre.", type=ValidatorType.SIMPLE),
+			@RequiredStringValidator(fieldName="rating", message="Please enter a rating.", type=ValidatorType.SIMPLE),
+			@RequiredStringValidator(fieldName="description", message="Please enter a description.", type=ValidatorType.SIMPLE),
+			},
+			requiredFields={
+			@RequiredFieldValidator(fieldName="year", message="Please enter a year.", type=ValidatorType.SIMPLE),
+			@RequiredFieldValidator(fieldName="duration", message="Please enter a duration.", type=ValidatorType.SIMPLE),
+			},
+			intRangeFields={
+			@IntRangeFieldValidator(fieldName="year", min="1900", max="2012", message="The year has to be between ${min} and ${max}" ),
+			}
+	)
 	public String saveMovie() throws Exception {
-		if (((User) getSession().get(SecurityInterceptor.USER_OBJECT))
-				.getRole() < 1) {
+		if (((User) getSession().get(SecurityInterceptor.USER_OBJECT)).getRole() < 1) {
 			addActionError("Your authentication level denies you this action");
 			return ERROR;
 		}
@@ -119,8 +148,7 @@ public class AdminMoviesActions extends MoviesActions implements
 		return SUCCESS;
 	}
 
-	private void processMoviePoster(String token)
-			throws NoSuchAlgorithmException, IOException {
+	private void processMoviePoster(String token) throws NoSuchAlgorithmException, IOException {
 		getModel().setPoster(token + "." + CineBookUtils.getExtension(pictureFileName));
 		String uploadPath = getContext().getRealPath("images" + File.separator + "posters");
 		File uploadedFile = new File(uploadPath, token + "." + CineBookUtils.getExtension(pictureFileName));

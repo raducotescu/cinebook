@@ -98,6 +98,10 @@
 		</action>
 		<action name="add" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.movies.AdminMoviesActions" method="addMovie">
 			<result name="success">/pages/movieEditForm.jsp</result>
+			<result name="input">/pages/movieEditForm.jsp</result>
+			<interceptor-ref name="paramsPrepareParamsStack">
+				<param name="validation.validateAnnotatedMethodOnly">true</param>
+			</interceptor-ref>
 		</action>
 		<action name="edit"	class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.movies.AdminMoviesActions" method="editMovie">
 			<result name="success">/pages/movieEditForm.jsp</result>
@@ -105,15 +109,26 @@
 		<action name="save" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.movies.AdminMoviesActions" method="saveMovie">
 			<result name="success" type="redirectAction">movieDetails?movieID=${movieID}</result>
 			<result name="input">/pages/movieEditForm.jsp</result>
+			<interceptor-ref name="paramsPrepareParamsStack">
+				<param name="validation.validateAnnotatedMethodOnly">true</param>
+			</interceptor-ref>
 		</action>
 		<action name="editSchedule" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.movies.AdminMoviesActions" method="editSchedule">
 			<result name="success">/pages/editSchedule.jsp</result>
+			<result name="input">/pages/editSchedule.jsp</result>
+			<interceptor-ref name="paramsPrepareParamsStack">
+				<param name="validation.validateAnnotatedMethodOnly">true</param>
+			</interceptor-ref>
 		</action>
 		<action name="saveMovieScheduleEntry" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.movies.AdminMoviesActions" method="saveMovieScheduleEntry">
 			<result name="success" type="redirectAction">
 				<param name="actionName">movieDetails?movieID=${movieID}</param>
 				<param name="namespace">/movies</param>
 			</result>
+			<result name="input">/pages/editSchedule.jsp</result>
+			<interceptor-ref name="paramsPrepareParamsStack">
+				<param name="validation.validateAnnotatedMethodOnly">true</param>
+			</interceptor-ref>
 		</action>
 	</package>
 </struts>
