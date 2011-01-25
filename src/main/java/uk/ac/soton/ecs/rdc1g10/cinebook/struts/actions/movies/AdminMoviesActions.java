@@ -50,11 +50,11 @@ public class AdminMoviesActions extends MoviesActions implements ServletContextA
 		movies = (Collection<Movie>) Database.readAll(Movie.class);
 	}
 	
-	public void validate() {
-		if(getModel().getPoster() == null && picture == null) {
-			addFieldError("picture", "Please add a poster file for the movie.");
-		}
-	}
+//	public void validate() {
+//		if(getModel().getPoster() == null && picture == null) {
+//			addFieldError("picture", "Please add a poster file for the movie.");
+//		}
+//	}
 	
 	public String editSchedule() throws Exception {
 		if (((User) getSession().get(SecurityInterceptor.USER_OBJECT)).getRole() < 1) {
