@@ -51,6 +51,7 @@ a:hover {
 	min-height: 365px;
 	padding-top: 15px;
 	clear: both;
+	overflow: hidden;
 }
 #dummy {
 	height: 1px;
@@ -61,7 +62,6 @@ a:hover {
 .movie {
 	width: 300px;
 	float: left;
-	margin-left: 5px;
 }
 .movieTitle {
 	font-size: 20px;
