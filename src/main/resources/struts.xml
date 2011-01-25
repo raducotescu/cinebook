@@ -65,6 +65,10 @@
 				<param name="actionName">friend?friendID=${friendID}</param>
 				<param name="namespace">/user</param>
 			</result>
+			<result name="ownresponse" type="redirectAction">
+				<param name="actionName">myPage?userID=${friendID}</param>
+				<param name="namespace">/user</param>
+			</result>
 		</action>
 		<action name="book" class="uk.ac.soton.ecs.rdc1g10.cinebook.struts.actions.user.UserActions" method="book">
 			<result name="success">/pages/book.jsp</result>

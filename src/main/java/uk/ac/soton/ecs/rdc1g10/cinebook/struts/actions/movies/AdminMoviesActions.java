@@ -118,14 +118,14 @@ public class AdminMoviesActions extends MoviesActions implements ServletContextA
 			@RequiredStringValidator(fieldName="director", message="Please enter the director's name.", type=ValidatorType.SIMPLE),
 			@RequiredStringValidator(fieldName="genre", message="Please enter a genre.", type=ValidatorType.SIMPLE),
 			@RequiredStringValidator(fieldName="rating", message="Please enter a rating.", type=ValidatorType.SIMPLE),
-			@RequiredStringValidator(fieldName="description", message="Please enter a description.", type=ValidatorType.SIMPLE),
+			@RequiredStringValidator(fieldName="description", message="Please enter a description.", type=ValidatorType.SIMPLE)
 			},
 			requiredFields={
 			@RequiredFieldValidator(fieldName="year", message="Please enter a year.", type=ValidatorType.SIMPLE),
-			@RequiredFieldValidator(fieldName="duration", message="Please enter a duration.", type=ValidatorType.SIMPLE),
+			@RequiredFieldValidator(fieldName="duration", message="Please enter a duration.", type=ValidatorType.SIMPLE)
 			},
 			intRangeFields={
-			@IntRangeFieldValidator(fieldName="year", min="1900", max="2012", message="The year has to be between ${min} and ${max}" ),
+			@IntRangeFieldValidator(fieldName="year", min="1900", max="2012", message="The year has to be between ${min} and ${max}" )
 			}
 	)
 	public String saveMovie() throws Exception {

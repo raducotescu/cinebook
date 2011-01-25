@@ -11,7 +11,7 @@
 		<hr />
 		<s:iterator value="comments">
 			<div id="comment-${id}">
-				<p>${postedby.firstName} ${postedby.lastName} said on <s:date name="datePosted" format="MMMM dd, yyyy" /> at <s:date name="datePosted" format="H:m" /></p>
+				<p>${postedby.firstName} ${postedby.lastName} said on <s:date name="datePosted" format="MMMM dd, yyyy" /> at <s:date name="datePosted" format="HH:mm" /></p>
 				<div id="commentText">${commentText}</div>
 				<p>Rating: ${overallRating}</p>
 				<s:form action="rateComment" namespace="/user" method="POST">

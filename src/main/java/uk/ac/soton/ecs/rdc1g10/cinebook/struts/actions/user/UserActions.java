@@ -148,6 +148,9 @@ public class UserActions extends BaseAction implements SessionAware, Preparable 
 				addActionError("You have tried to rate an unexistent comment!");
 				return ERROR;
 			}
+			if(friendID.equals(user.getId())) {
+				return "ownresponse";
+			}
 			return SUCCESS;
 		}
 		return ERROR;
